@@ -11,8 +11,8 @@ function to_page2(a, b, title) {
 
 function record(a, num) {
 	var par_id = a.parentNode.id;
-	if (localStorage.getItem('record') !== "false") {
-		localStorage.setItem(par_id, num);
+	if (localStorage.getItem("read_novel_"+'record') !== "false") {
+		localStorage.setItem("read_novel_"+par_id, num);
 		in_record(par_id);
 	}
 	
@@ -35,8 +35,8 @@ function in_record(a) {
 		var parent = document.getElementById('record').parentNode;
 		parent.removeChild(document.getElementById('record'));
 	}
-	if (localStorage.getItem(a)) {
-		var record = localStorage.getItem(a);
+	if (localStorage.getItem("read_novel_"+a)) {
+		var record = localStorage.getItem("read_novel_"+a);
 		document.getElementById(a).children[record].innerHTML += "<div id=\'record\' class=\'items_name_r record\'>&oplus;</div>";
 	}
 }
@@ -59,9 +59,9 @@ function to_story2(a) {
 		$('#'+story_fake).fadeOut(400);
 		to_story(new_story);
 
-		if (localStorage.getItem('record') !== "false") {
+		if (localStorage.getItem("read_novel_"+'record') !== "false") {
 			var par_id = "page"+story_spl[1];
-			localStorage.setItem(par_id, new_story_index);
+			localStorage.setItem("read_novel_"+par_id, new_story_index);
 			in_record(par_id);
 		}
 	}
@@ -97,23 +97,23 @@ window.onload = function() {
 	$('html, body').animate({scrollTop: 0}, 400);
 
 	// 設定內容
-	if (localStorage.getItem('font_size')) {
-		var size_index = parseInt(localStorage.getItem('font_size'));
+	if (localStorage.getItem("read_novel_"+'font_size')) {
+		var size_index = parseInt(localStorage.getItem("read_novel_"+'font_size'));
 		var size_selected = document.getElementById('font_size');
 		size_selected.options[size_index].selected = true;
 		font_size(size_selected);
 	}
-	if (localStorage.getItem('font_color')) {
-		var color_index = parseInt(localStorage.getItem('font_color'));
+	if (localStorage.getItem("read_novel_"+'font_color')) {
+		var color_index = parseInt(localStorage.getItem("read_novel_"+'font_color'));
 		var color_selected = document.getElementById('font_color');
 		color_selected.options[color_index].selected = true;
 		font_color(color_selected);
 	}
-	if (localStorage.getItem('record') == "false") {
+	if (localStorage.getItem("read_novel_"+'record') == "false") {
 		var par = document.getElementById("record_judge").parentNode;
 		par.removeChild(document.getElementById("record_judge"));
 	}
-	if (localStorage.getItem('text_select')) {
+	if (localStorage.getItem("read_novel_"+'text_select')) {
 		document.getElementById('text_select').style.backgroundColor = "unset";
 		$(".story_title").css("user-select", "none");
 		$(".story_para").css("user-select", "none");
@@ -122,13 +122,13 @@ window.onload = function() {
 
 // 以下設定
 function font_size(a) {
-	localStorage.setItem("font_size", a.value);
+	localStorage.setItem("read_novel_"+"font_size", a.value);
 	var new_size = a.options[a.value].text+"px";
 	$(".story_para").css("font-size", new_size);
 	a.style.fontSize = new_size;
 }
 function font_color(a) {
-	localStorage.setItem("font_color", a.value);
+	localStorage.setItem("read_novel_"+"font_color", a.value);
 	var bc = a.options[parseInt(a.value)].style.backgroundColor;
 	var c = a.options[parseInt(a.value)].style.color;
 	a.style.backgroundColor = bc;
@@ -138,32 +138,32 @@ function font_color(a) {
 }
 
 function use_record(a) {
-	if (localStorage.getItem('record') !== "false") {
+	if (localStorage.getItem("read_novel_"+'record') !== "false") {
 		var judge = confirm("此動作將清除觀看紀錄\r確定清除記錄嗎?");
 		if (judge == true) {
 			a.removeChild(a.children[2]);
 			var len = document.getElementById('tot').children.length;
 			for (var i = 3; i < len; i++) {
 				var ch_id = document.getElementById('tot').children[i].id;
-				localStorage.removeItem(ch_id);
+				localStorage.removeItem("read_novel_"+ch_id);
 			}
-			localStorage.setItem("record", "false");
+			localStorage.setItem("read_novel_"+"record", "false");
 		}
 	}
 	else {
-		localStorage.removeItem("record");
+		localStorage.removeItem("read_novel_"+"record");
 		a.innerHTML += "<div id=\'record_judge\' class=\'items_name_r record\'>&oplus;</div>"
 	}
 }
 function text_select(a) {
-	if (localStorage.getItem("text_select")) {
-		localStorage.removeItem("text_select");
+	if (localStorage.getItem("read_novel_"+"text_select")) {
+		localStorage.removeItem("read_novel_"+"text_select");
 		a.children[2].style.backgroundColor = "#00F";
 		$(".story_title").css("user-select", "text");
 		$(".story_para").css("user-select", "text");
 	}
 	else {
-		localStorage.setItem("text_select", "false");
+		localStorage.setItem("read_novel_"+"text_select", "false");
 		a.children[2].style.backgroundColor = "unset";
 		$(".story_title").css("user-select", "none");
 		$(".story_para").css("user-select", "none");
@@ -171,10 +171,16 @@ function text_select(a) {
 }
 function all_clear() {
 	var judge = confirm("此動作將還原所有設定和紀錄\r確定還原設定嗎?");
-		if (judge == true) {
-			localStorage.clear();
-			window.location.reload();
+	if (judge == true) {
+		for (var i = 0; i < localStorage.length; i++) {
+			var item = localStorage.key(i);
+			if (item.substr(0, 10) === "read_novel_") {
+				localStorage.removeItem(item);
+			}
 		}
+		localStorage.clear();
+		window.location.reload();
+	}
 }
 
 // para
