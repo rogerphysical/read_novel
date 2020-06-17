@@ -127,12 +127,12 @@ body {
 	font-size: 40px;
 }
 .item {
-	width: 768px;
+	width: 425px;
 	height: 70vh;
 	margin: auto;
 	position: relative;
 }
-@media (max-width: 768px) {
+@media (max-width: 425px) {
   /* For desktop: */
   .item {
   	width: 100%;
@@ -170,11 +170,18 @@ body {
 	background-color: #FDF;
 	color: #202;
 }
-.items_name img {
-	max-width: 50px;
-	height: 100%;
+.items_name_pic {
+	width: 34px;
+	height: 34px;
 	float: left;
 	margin: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.items_name img {
+	max-width: 100%;
+	max-height: 100%;
 }
 .items_name_l {
 	float: left;

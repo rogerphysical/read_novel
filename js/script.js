@@ -15,7 +15,7 @@ function record(a, num) {
 		localStorage.setItem("read_novel_"+par_id, num);
 		in_record(par_id);
 	}
-
+	
 	document.getElementById('story').style.transform = "rotate(0deg)";
 	setTimeout("document.getElementById('story').style.zIndex = 2", 400)
 	setTimeout("record2("+par_id.substr(4)+", "+num+")", 400)
