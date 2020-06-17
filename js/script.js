@@ -109,7 +109,7 @@ window.onload = function() {
 		color_selected.options[color_index].selected = true;
 		font_color(color_selected);
 	}
-	if (localStorage.getItem("read_novel_"+'record') == "false") {
+	if (localStorage.getItem("read_novel_"+'record') === "false") {
 		var par = document.getElementById("record_judge").parentNode;
 		par.removeChild(document.getElementById("record_judge"));
 	}
@@ -140,7 +140,7 @@ function font_color(a) {
 function use_record(a) {
 	if (localStorage.getItem("read_novel_"+'record') !== "false") {
 		var judge = confirm("此動作將清除觀看紀錄\r確定清除記錄嗎?");
-		if (judge == true) {
+		if (judge === true) {
 			a.removeChild(a.children[2]);
 			var len = document.getElementById('tot').children.length;
 			for (var i = 3; i < len; i++) {
@@ -171,14 +171,13 @@ function text_select(a) {
 }
 function all_clear() {
 	var judge = confirm("此動作將還原所有設定和紀錄\r確定還原設定嗎?");
-	if (judge == true) {
-		for (var i = 0; i < localStorage.length; i++) {
+	if (judge === true) {
+		for (var i = localStorage.length-1; i >= 0; i--) {
 			var item = localStorage.key(i);
-			if (item.substr(0, 10) === "read_novel_") {
+			if (item.substr(0, 11) === "read_novel_") {
 				localStorage.removeItem(item);
 			}
 		}
-		localStorage.clear();
 		window.location.reload();
 	}
 }
