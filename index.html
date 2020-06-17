@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>類小說閱讀器</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</head>
+	<body>
+		<div id="story">
+			<div id="story_fake"></div>
+			<div id="story_bts">
+				<div id="story_close" class="story_bt" onclick="story_close()">close</div>
+				<div id="story_back" class="story_bt" onclick="to_story2(-1)">back</div>
+				<div id="story_next" class="story_bt" onclick="to_story2(1)">next</div>
+			</div>
+			<div id="story_1_1" class="story_items">
+				<div class="story_title"></div>
+				<div class="story_para">第1段</div>
+				<div class="story_para">第2段</div>
+				<div class="story_para">第3段</div>
+				<div class="story_para">第4段</div>
+				<div class="story_para">第5段</div>
+				<div class="story_para">第6段</div>
+				<div class="story_para">第7段</div>
+				<div class="story_para">第8段</div>
+				<div class="story_para">第9段</div>
+				<div class="story_para">第10段</div>
+				<div class="story_para">第11段</div>
+				<div class="story_para">第12段</div>
+				<div class="story_para">第13段</div>
+				<div class="story_para">第14段</div>
+				<div class="story_para">第15段</div>
+				<div class="story_para">第16段</div>
+				<div class="story_para">第17段</div>
+				<div class="story_para">第18段</div>
+				<div class="story_para">第19段</div>
+				<div class="story_para">第20段</div>
+			</div>
+			<div id="story_1_2" class="story_items">
+				<div class="story_title"></div>
+				<div class="story_para">第1段</div>
+				<div class="story_para">第2段</div>
+				<div class="story_para">第3段</div>
+				<div class="story_para">第4段</div>
+				<div class="story_para">第5段</div>
+				<div class="story_para">第6段</div>
+				<div class="story_para">第7段</div>
+				<div class="story_para">第8段</div>
+				<div class="story_para">第9段</div>
+				<div class="story_para">第10段</div>
+			</div>
+			<div id="story_1_3" class="story_items">
+				<div class="story_title"></div>
+				<div class="story_para">第1段</div>
+				<div class="story_para">第2段</div>
+				<div class="story_para">第3段</div>
+				<div class="story_para">第4段</div>
+				<div class="story_para">第5段</div>
+				<div class="story_para">第6段</div>
+				<div class="story_para">第7段</div>
+				<div class="story_para">第8段</div>
+				<div class="story_para">第9段</div>
+				<div class="story_para">第10段</div>
+			</div>
+
+			<div id="story_2_1" class="story_items">
+				<div class="story_title"></div>
+				<div class="story_para">第1段</div>
+				<div class="story_para">第2段</div>
+				<div class="story_para">第3段</div>
+				<div class="story_para">第4段</div>
+				<div class="story_para">第5段</div>
+				<div class="story_para">第6段</div>
+				<div class="story_para">第7段</div>
+				<div class="story_para">第8段</div>
+				<div class="story_para">第9段</div>
+				<div class="story_para">第10段</div>
+				<div class="story_para_select">
+					<div class="story_para_select_item story_para_select_none" onclick="story_para_select_reset(this)">重選</div>
+					<div class="story_para_select">
+						<div class="story_para_select_none"></div>
+						<div class="story_para_select_item" onclick="story_para_select_item(this, 'story_2_1_select_1_1')">選項一</div>
+						<div class="story_para_select_item" onclick="story_para_select_item(this, 'story_2_1_select_1_2')">選項二</div>
+						<div class="story_para_select_item" onclick="story_para_select_item(this, 'story_2_1_select_1_3')">選項三</div>
+						<div class="story_para_select_item" onclick="story_para_select_item(this, 'story_2_1_select_1_4')">選項四</div>
+					</div>
+				</div>
+				<div id="story_2_1_select_1_1" class="story_para_select_none">
+					<div class="story_para">第11_1段</div>
+					<div class="story_para">第12_1段</div>
+					<div class="story_para">第13_1段</div>
+					<div class="story_para">第14_1段</div>
+				</div>
+				<div id="story_2_1_select_1_2" class="story_para_select_none">
+					<div class="story_para">第11_2段</div>
+					<div class="story_para">第12_2段</div>
+				</div>
+				<div id="story_2_1_select_1_3" class="story_para_select_none">
+					<div class="story_para">第11_3段</div>
+					<div class="story_para">第12_3段</div>
+					<div class="story_para">第13_3段</div>
+					<div class="story_para">第14_3段</div>
+					<div class="story_para">第15_3段</div>
+					<div class="story_para">第16_3段</div>
+				</div>
+				<div id="story_2_1_select_1_4" class="story_para_select_none">
+					<div class="story_para">第11段</div>
+					<div class="story_para">第12段</div>
+					<div class="story_para">第13段</div>
+					<div class="story_para">第14段</div>
+					<div class="story_para_select">
+						<div class="story_para_select_item story_para_select_none" onclick="story_para_select_reset(this)">重選</div>
+						<div class="story_para_select">
+							<div class="story_para_select_none"></div>
+							<div class="story_para_select_item" onclick="story_para_select_item(this, 'story_2_1_select_2_1')">選項一</div>
+							<div class="story_para_select_item" onclick="story_para_select_item(this, 'story_2_1_select_2_2')">選項二</div>
+							<div class="story_para_select_item" onclick="story_para_select_item(this, 'story_2_1_select_2_3')">選項三</div>
+							<div class="story_para_select_item" onclick="story_para_select_item(this, 'story_2_1_select_2_4')">選項四</div>
+						</div>
+					</div>
+					<div id="story_2_1_select_2_1" class="story_para_select_none">
+						<div class="story_para">第15_1段</div>
+						<div class="story_para">第16_1段</div>
+					</div>
+					<div id="story_2_1_select_2_2" class="story_para_select_none">
+						<div class="story_para">第15段</div>
+						<div class="story_para">第16段</div>
+						<div class="story_para">第17段</div>
+						<div class="story_para">第18段</div>
+						<div class="story_para">第19段</div>
+						<div class="story_para">第20段</div>
+					</div>
+					<div id="story_2_1_select_2_3" class="story_para_select_none">
+						<div class="story_para">第15_2段</div>
+						<div class="story_para">第16_2段</div>
+					</div>
+					<div id="story_2_1_select_2_4" class="story_para_select_none">
+						<div class="story_para">第15_3段</div>
+						<div class="story_para">第16_3段</div>
+						<div class="story_para">第17_3段</div>
+						<div class="story_para">第18_3段</div>
+					</div>
+				</div>
+			</div>
+			<div id="story_2_2" class="story_items">
+				<div class="story_title"></div>
+			</div>
+			<div id="story_2_3" class="story_items">
+				<div class="story_title"></div>
+			</div>
+
+			<div id="story_3_1" class="story_items">
+				<div class="story_title"></div>
+				<div class="story_para_pic">
+					<img src="images/book.jpg">
+				</div>
+				<div class="story_para_area">
+					<div class="story_para">第1段</div>
+					<div class="story_para">第2段</div>
+					<div class="story_para">第3段</div>
+					<div class="story_para">第4段</div>
+					<div class="story_para">第5段</div>
+					<div class="story_para">第6段</div>
+					<div class="story_para">第7段</div>
+					<div class="story_para">第8段</div>
+					<div class="story_para">第9段</div>
+					<div class="story_para">第10段</div>
+				</div>
+			</div>
+			<div id="story_3_2" class="story_items">
+				<div class="story_title"></div>
+			</div>
+			<div id="story_3_3" class="story_items">
+				<div class="story_title"></div>
+			</div>
+		</div>
+
+		<div id="title">類小說閱讀器</div>
+		<div id="tot" class="item">
+			<div id="page_none" class="items"></div>
+			<div id="page" class="items">
+				<div class="items_name" onclick="to_page('page', 'page0', this)">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">設定</div>
+					<div class="items_name_r items_name_r1">&Delta;</div>
+				</div>
+				<div class="items_name" onclick="to_page('page', 'page1', this), in_record('page1')">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">文本閱讀</div>
+					<div class="items_name_r items_name_r1">&Delta;</div>
+				</div>
+				<div class="items_name" onclick="to_page('page', 'page2', this), in_record('page2')">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">唯一線索</div>
+					<div class="items_name_r items_name_r1">&Delta;</div>
+				</div>
+				<div class="items_name" onclick="to_page('page', 'page3', this), in_record('page3')">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">圖文劇本</div>
+					<div class="items_name_r items_name_r1">&Delta;</div>
+				</div>
+				<div class="items_name" onclick="show_copyright()">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">版權所有</div>
+					<div class="items_name_r items_name_r1">&Delta;</div>
+				</div>
+			</div>
+
+			<div id="page0" class="items">
+				<div class="items_name" onclick="to_page2('page0', 'page', '類小說閱讀器')">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">回主頁</div>
+					<div class="items_name_r items_name_r2">&Delta;</div>
+				</div>
+				<div class="items_name">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">字體大小</div>
+					<select id="font_size" class="items_name_r" onchange="font_size(this)">
+						<option value="0">16</option>
+						<option value="1">20</option>
+						<option value="2">24</option>
+						<option value="3" selected>28</option>
+						<option value="4">32</option>
+					</select>
+				</div>
+				<div class="items_name" onclick="">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">顏色組合</div>
+					<select id="font_color" class="items_name_r" onchange="font_color(this)">
+						<option value="0" selected style="color: #FDF; background-color: #202;">黑底白字</option>
+						<option value="1" style="color: #202; background-color: #FDF;">白底黑字</option>
+						<option value="2" style="color: #202; background-color: #F8F8F8;">灰底黑字</option>
+						<option value="3" style="color: #114; background-color: #F8F8F8;">灰底藍字</option>
+						<option value="4" style="color: #141; background-color: #F8F8F8;">灰底綠字</option>
+					</select>
+				</div>
+				<div class="items_name" onclick="use_record(this)">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">使用觀看紀錄</div>
+					<div id="record_judge" class="items_name_r record">&oplus;</div>
+				</div>
+				<div class="items_name" onclick="text_select(this)">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">文章文字選取</div>
+					<div id="text_select" class="items_name_r">字</div>
+				</div>
+				<div class="items_name" onclick="all_clear()">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">回復為預設值</div>
+				</div>
+			</div>
+
+			<div id="page1" class="items">
+				<div class="items_name" onclick="to_page2('page1', 'page', '類小說閱讀器')">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">回主頁</div>
+					<div class="items_name_r items_name_r2">&Delta;</div>
+				</div>
+				<div class="items_name" onclick="record(this, 1)">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">楔子</div>
+				</div>
+				<div class="items_name" onclick="record(this, 2)">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">第一章</div>
+				</div>
+				<div class="items_name" onclick="record(this, 3)">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">第二章</div>
+				</div>
+			</div>
+
+			<div id="page2" class="items">
+				<div class="items_name" onclick="to_page2('page2', 'page', '類小說閱讀器')">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">回主頁</div>
+					<div class="items_name_r items_name_r2">&Delta;</div>
+				</div>
+				<div class="items_name" onclick="record(this, 1)">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">事件開端</div>
+				</div>
+				<div class="items_name" onclick="record(this, 2)">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">案件一</div>
+				</div>
+				<div class="items_name" onclick="record(this, 3)">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">案件二</div>
+				</div>
+			</div>
+
+			<div id="page3" class="items">
+				<div class="items_name" onclick="to_page2('page3', 'page', '類小說閱讀器')">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">回主頁</div>
+					<div class="items_name_r items_name_r2">&Delta;</div>
+				</div>
+				<div class="items_name" onclick="record(this, 1)">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">開場白</div>
+				</div>
+				<div class="items_name" onclick="record(this, 2)">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">第一幕</div>
+				</div>
+				<div class="items_name" onclick="record(this, 3)">
+					<img src="images/unknown_radius.ico">
+					<div class="items_name_l">第二幕</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="footer">
+			Copyright &copy; 2020 坴奉Roger
+		</div>
+	</body>
+</html>
