@@ -18,12 +18,16 @@ function record(a, num) {
 	
 	document.getElementById('story').style.zIndex = "2";
 	document.getElementById('story').style.transform = "rotate(0deg)";
+	
+	setTimeout("record2("+par_id.substr(4)+", "+num+")", 400)
+}
+function record2(par_id_num, num) {
 	var story_width = ($(window).width() > 500)?"80%":"100%";
 	var story_left = ($(window).width() > 500)?"10%":"0%";
 	$("#story").animate({width: story_width, left: story_left, height: '100%', top: '0%'}, 400);
 	$('#story_bts').fadeIn(400);
 
-	var story_id = "story_"+par_id.substr(4)+"_"+num;
+	var story_id = "story_"+par_id_num+"_"+num;
 	to_story(story_id);
 }
 function in_record(a) {
@@ -42,7 +46,7 @@ function to_story(b) {
 	var story_spl = b.split("_");
 	var new_story_index = parseInt(story_spl[2]);
 	var title2 = document.getElementById("page"+story_spl[1]).children[new_story_index].children[1].innerHTML;
-	document.getElementById(b).children[0].innerHTML = title1+" "+title2;
+	document.getElementById(b).children[0].innerHTML = title1+" >> "+title2;
 	setTimeout("$('#"+b+"').slideDown(400)", 400);
 	document.getElementById('story_fake').innerHTML = b;
 }
@@ -71,10 +75,13 @@ function story_close() {
 }
 function story_close2() {
 	$("#story").animate({width: '100vw', left: '0px', height: '2px', top: '50vh'}, 400);
+	setTimeout("story_close3()", 400);
+}
+function story_close3() {
 	var ran_j = (Math.random() < 0.5)?-1:1;
-	var ran = ran_j*(10+Math.random()*10);
-	document.getElementById('story').style.transform = "rotate("+ran.toString()+"deg)";
-	setTimeout("document.getElementById('story').style.zIndex = "+"-1", 400);
+	var ran = ran_j*(10+Math.random()*35);
+	document.getElementById('story').style.transform = "rotate("+ran+"deg)";
+	setTimeout("document.getElementById('story').style.zIndex = -1", 400);
 }
 
 function show_copyright() {
@@ -85,7 +92,7 @@ function show_copyright() {
 
 window.onload = function() {
 	var ran_j = (Math.random() < 0.5)?-1:1;
-	var ran = ran_j*(10+Math.random()*10);
+	var ran = ran_j*(10+Math.random()*35);
 	document.getElementById('story').style.transform = "rotate("+ran.toString()+"deg)";
 	$('html, body').animate({scrollTop: 0}, 400);
 
