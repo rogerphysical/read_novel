@@ -127,15 +127,15 @@ body {
 	font-size: 40px;
 }
 .item {
-	width: 90%;
+	width: 768px;
 	height: 70vh;
 	margin: auto;
 	position: relative;
 }
-@media (min-width: 500px) {
+@media (max-width: 768px) {
   /* For desktop: */
   .item {
-  	width: 450px;
+  	width: 100%;
   }
 }
 .items {

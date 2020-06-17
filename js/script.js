@@ -15,15 +15,14 @@ function record(a, num) {
 		localStorage.setItem("read_novel_"+par_id, num);
 		in_record(par_id);
 	}
-	
-	document.getElementById('story').style.zIndex = "2";
+
 	document.getElementById('story').style.transform = "rotate(0deg)";
-	
+	setTimeout("document.getElementById('story').style.zIndex = 2", 400)
 	setTimeout("record2("+par_id.substr(4)+", "+num+")", 400)
 }
 function record2(par_id_num, num) {
-	var story_width = ($(window).width() > 500)?"80%":"100%";
-	var story_left = ($(window).width() > 500)?"10%":"0%";
+	var story_width = ($(window).width() > 768)?"80%":"100%";
+	var story_left = ($(window).width() > 768)?"10%":"0%";
 	$("#story").animate({width: story_width, left: story_left, height: '100%', top: '0%'}, 400);
 	$('#story_bts').fadeIn(400);
 
@@ -78,23 +77,26 @@ function story_close2() {
 	setTimeout("story_close3()", 400);
 }
 function story_close3() {
-	var ran_j = (Math.random() < 0.5)?-1:1;
-	var ran = ran_j*(10+Math.random()*35);
-	document.getElementById('story').style.transform = "rotate("+ran+"deg)";
-	setTimeout("document.getElementById('story').style.zIndex = -1", 400);
+	document.getElementById('story').style.zIndex = -1;
+	if ($(window).width() > 768) {
+		var ran_j = (Math.random() < 0.5)?-1:1;
+		var ran = ran_j*(10+Math.random()*35);
+		document.getElementById('story').style.transform = "rotate("+ran+"deg)";
+	}
 }
 
 function show_copyright() {
-	// $('html, body').animate({scrollTop: $('body').height()-$(window).height()}, 400);
-	$('html, body').animate({scrollTop: $('body').height()}, 1000);
+	$('html, body').animate({scrollTop: $('body').height()-$(window).height()}, 1000);
 	$('html, body').animate({scrollTop: 0}, 1000);
 }
 
 window.onload = function() {
-	var ran_j = (Math.random() < 0.5)?-1:1;
-	var ran = ran_j*(10+Math.random()*35);
-	document.getElementById('story').style.transform = "rotate("+ran.toString()+"deg)";
 	$('html, body').animate({scrollTop: 0}, 400);
+	if ($(window).width() > 768) {
+		var ran_j = (Math.random() < 0.5)?-1:1;
+		var ran = ran_j*(10+Math.random()*35);
+		document.getElementById('story').style.transform = "rotate("+ran+"deg)";
+	}
 
 	// 設定內容
 	if (localStorage.getItem("read_novel_"+'font_size')) {
