@@ -195,7 +195,7 @@ function story_para_select_item(a, choise_id, pic=0, or_pos=0) {
 	a.parentNode.parentNode.children[0].style.display = "block";
 	or_id.innerHTML = choise_id;
 }
-// this 圖的id顯現(否則為0) 紀錄當前位置id的存放位置 是否把自己none
+// this pic:id顯現(否則為0) 紀錄當前位置id的存放位置 是否把自己none
 function story_para_select_reset(a, pic=0, or_pos=0, exist=0) {
 	if (exist === 0) {
 		a.style.display = "none";
@@ -209,14 +209,11 @@ function story_para_select_reset(a, pic=0, or_pos=0, exist=0) {
 		or_id.innerHTML = pic;
 	}
 }
-function story_para_change(a, id, delta, range, min, max, min_id=0, mid_id=0, max_id=0, min_end=0, mid_end=0, max_end=0) {
-	var or_id = a.parentNode.children[0]
-	var pos = document.getElementById(id);
-	var num = pos.innerHTML;
-	num = parseInt(num)+delta+Math.round(Math.random()*range)-Math.round(range*0.5);
+function story_para_change(a, id, change_to, min=-Infinity, max=Infinity, min_id=0, mid_id=0, max_id=0, min_end=0, mid_end=0, max_end=0) {
+	var or_id = a.parentNode.children[0];
 
-	if (num <= min) {
-		pos.innerHTML = min;
+	if (change_to <= min) {
+		document.getElementById(id).innerHTML = min;
 		if (min_id !== 0) {
 			document.getElementById(or_id.innerHTML).style.display = "none";
 
@@ -236,8 +233,8 @@ function story_para_change(a, id, delta, range, min, max, min_id=0, mid_id=0, ma
 			}
 		}
 	}
-	else if (num >= max) {
-		pos.innerHTML = max;
+	else if (change_to >= max) {
+		document.getElementById(id).innerHTML = max;
 		if (max_id !== 0) {
 			document.getElementById(or_id.innerHTML).style.display = "none";
 
@@ -257,7 +254,7 @@ function story_para_change(a, id, delta, range, min, max, min_id=0, mid_id=0, ma
 		}
 	}
 	else {
-		pos.innerHTML = num;
+		document.getElementById(id).innerHTML = change_to;
 		if (mid_id !== 0) {
 			document.getElementById(or_id.innerHTML).style.display = "none";
 
@@ -279,4 +276,12 @@ function story_para_change(a, id, delta, range, min, max, min_id=0, mid_id=0, ma
 }
 function story_para_change_reset(id, or) {
 	document.getElementById(id).innerHTML = or;
+}
+function change_to_num(id) {
+	var num = document.getElementById(id).innerHTML;
+	return parseInt(num);
+}
+function change_to_num2(num, range) {
+	var num2 = num+Math.random()*range-range*0.5;
+	return Math.round(num2)
 }
