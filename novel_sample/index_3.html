@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<title>類小說閱讀器</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+	</head>
+	<body>
+		<div id="story_1_3" class="story_items">
+			<div class="story_title">標題3</div>
+			<div class="story_para_pic">
+				<img id="story_1_3_select_1_0_pic" src="images/unknown_radius.ico">
+				<img id="story_1_3_select_1_1_pic" class="story_para_none" src="images/book.jpg">
+				<img id="story_1_3_select_1_2_pic" class="story_para_none" src="images/book2.jpg">
+			</div>
+			<div class="story_para_area">
+				<div class="story_para">第1段</div>
+				<div class="story_para">第2段</div>
+				<div class="story_para">第3段</div>
+				<div class="story_para">第4段</div>
+				<div class="story_para_select">
+					<div class="story_para story_para_select_item story_para_none" onclick="story_para_select_reset(this, 'story_1_3_select_1_0_pic', 1), story_para_select_reset(this)">重選</div>
+					<div class="story_para_select">
+						<div class="story_para_none"></div>
+						<div class="story_para_none">story_1_3_select_1_0_pic</div>
+						<div class="story_para story_para_select_item" onclick="story_para_select_item(this, 'story_1_3_select_1_1_pic', 1, 1), story_para_select_item(this, 'story_1_3_select_1_1')">選項一</div>
+						<div class="story_para story_para_select_item" onclick="story_para_select_item(this, 'story_1_3_select_1_2_pic', 1, 1), story_para_select_item(this, 'story_1_3_select_1_2')">選項二</div>
+					</div>
+				</div>
+				<div id="story_1_3_select_1_1" class="story_para_none">
+					<div class="story_para">第5_1段</div>
+					<div class="story_para">第6_1段</div>
+					<div class="story_para">第7_1段</div>
+					<div class="story_para">第8_1段</div>
+				</div>
+				<div id="story_1_3_select_1_2" class="story_para_none">
+					<div class="story_para">第5段</div>
+					<div class="story_para">第6段</div>
+					<div class="story_para">第7段</div>
+					<div class="story_para">第8段</div>
+					<div class="story_para">第9段</div>
+					<div class="story_para">第10段</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

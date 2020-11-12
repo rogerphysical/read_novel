@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<title>類小說閱讀器</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+	</head>
+	<body>
+		<div id="story_1_4" class="story_items">
+			<div class="story_title"></div>
+			<div class="story_para_area2">
+				<div class="story_para">100%則成功:<span id="story_1_4_change_1">0</span>%</div>
+				<div class="story_para">0%或100%則失敗:<span id="story_1_4_change_2">50</span>%</div>
+				<div class="story_para">選擇次數:<span id="story_1_4_change_3">0</span>次</div>
+			</div>
+			<div class="story_para_area">
+				<div class="story_para">第1段</div>
+				<div class="story_para">第2段</div>
+				<div class="story_para_select">
+					<div class="story_para story_para_select_item" onclick="story_para_select_reset(this, 0, 0, 1), story_para_change_reset('story_1_4_change_1', 0), story_para_change_reset('story_1_4_change_2', 50), story_para_change_reset('story_1_4_change_3', 0)">重新</div>
+					<div class="story_para_select">
+						<!-- 下行為存放目前開啟的div id -->
+						<div class="story_para_none">story_1_4_select_1_0_0</div>
+						<div class="story_para story_para story_para_select_item" onclick="story_para_change(this, 'story_1_4_change_1', change_to_num('story_1_4_change_1')+change_to_num2(14, 4), 0, 100, 'story_1_4_select_1_1', 'story_1_4_select_1_1', 'story_1_4_select_1_0_1', 0, 0, 1), story_para_change(this, 'story_1_4_change_2', change_to_num('story_1_4_change_2')+change_to_num2(20, 4), 0, 100, 0, 0, 'story_1_4_select_1_0_2', 0, 0, 1), story_para_change(this, 'story_1_4_change_3', change_to_num('story_1_4_change_3')+1)">上+14、下+20</div>
+						<div class="story_para story_para_select_item" onclick="story_para_change(this, 'story_1_4_change_1', change_to_num('story_1_4_change_1')+change_to_num2(-10, 4), 0, 100, 'story_1_4_select_1_2', 'story_1_4_select_1_2', 'story_1_4_select_1_0_1', 0, 0, 1), story_para_change(this, 'story_1_4_change_2', change_to_num('story_1_4_change_2')+change_to_num2(-24, 4), 0, 100, 'story_1_4_select_1_0_3', 0, 0, 1, 0, 0), story_para_change(this, 'story_1_4_change_3', change_to_num('story_1_4_change_3')+1)">上-10、下-24</div>
+					</div>
+				</div>
+				<!-- 下行為起始的div -->
+				<div id="story_1_4_select_1_0_0"></div>
+				<div id="story_1_4_select_1_0_1" class="story_para_none">
+					<!-- 若兩段以上 用div包住 如下 -->
+					<div>
+						<div class="story_para">第3段:成功</div>
+						<div class="story_para">第4段</div>
+					</div>
+				</div>
+				<div id="story_1_4_select_1_0_2" class="story_para_none">
+					<!-- 若一段 直接用即可 如下 -->
+					<div class="story_para">第3_1段:失敗</div>
+				</div>
+				<div id="story_1_4_select_1_0_3" class="story_para_none">
+					<!-- 若一段 直接用即可 如下 -->
+					<div class="story_para">第3_2段:失敗</div>
+				</div>
+
+				<div id="story_1_4_select_1_1" class="story_para_none">
+					<!-- 若多個走向 創建第一行 在直接用即可 如下 -->
+					<div class="story_para_none">0</div>
+					<div class="story_para story_para_none">第2_1_1段</div>
+					<div class="story_para story_para_none">第2_1_2段</div>
+					<div class="story_para story_para_none">第2_1_3段</div>
+					<div class="story_para story_para_none">第2_1_4段</div>
+				</div>
+
+				<div id="story_1_4_select_1_2" class="story_para_none">
+					<div class="story_para_none">0</div>
+					<div class="story_para story_para_none">第2_2_1段</div>
+					<div class="story_para story_para_none">第2_2_2段</div>
+					<div class="story_para story_para_none">第2_2_3段</div>
+					<div class="story_para story_para_none">第2_2_4段</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
