@@ -20,22 +20,58 @@ window.onload = function() {
 	if (localStorage.getItem("read_novel_"+'text_select')) {
 		document.getElementById('text_select').style.backgroundColor = "unset";
 	}
+
+	// 網址
+	if (location.search) {
+		var paras = location.search.substr(1).split('&');
+
+		// 預設參數
+		var par_id = 0;
+		var par_src = 0;
+		var par_index = 0;
+
+		// 每個參數獨自判斷
+		for (var i=0; i < paras.length; i++) {
+			var para_spl = paras[i].split('=');
+			switch(para_spl[0]) {
+				case 'id':
+					par_id = para_spl[1];
+					break;
+				case 'src':
+					par_src = para_spl[1];
+					break;
+				case 'index':
+					par_index = parseInt(para_spl[1]);
+					break;
+			}
+		}
+		// 判斷三者皆存在
+		if (par_id !== 0 && par_src !== 0 && par_index !== 0) {
+			save_page(par_id, par_src);
+			record(par_index);
+		}
+	}
 }
+
+// 改變網址
+function shange_url() {
+	var str = '?id='+story_page_id;
+	str += '&src='+story_page_src;
+	str += '&index='+story_index;
+	history.pushState(null,null, str);
+}
+
 function to_top() {
 	$('html, body').animate({scrollTop: 0}, 400);
 }
 function show_copyright() {
 	$('html, body').animate({scrollTop: $('body').height()-$(window).height()}, 1000);
 	setTimeout("$('html, body').animate({scrollTop: 0}, 1000)", 2000)
+	history.pushState(null,null, "?123=456");
 }
 
-function to_page(a, b, src=0) {
+function to_page(a, b) {
 	$('#'+a).fadeOut(400);
-
-	if (src !== 0) {
-		setTimeout("document.getElementById('cont').src = story_page_src+'/index_'+story_index+'.html'", 400);
-	}
-
 	setTimeout("$('#"+b+"').slideDown(400)", 400);
 }
 
@@ -131,56 +167,64 @@ function record(num) {
 
 	document.getElementById('cont').src = story_page_src+'/index_'+story_index+'.html';
 
+	// 改變網址
+	shange_url();
+
+	// 轉
 	document.getElementById('story').style.transform = "rotate(0deg)";
 	setTimeout("document.getElementById('story').style.zIndex = 2", 400);
 	setTimeout("record2()", 400);
 }
+// 開
 function record2() {
 	var story_width = $(window).width() > 768?"80%":"100%";
 	var story_left = $(window).width() > 768?"10%":"0%";
 	$("#story").animate({width: story_width, left: story_left, height: '100vh', top: '0%'}, 400);
-	
+
 	judge_bts();
-	$('#story_bts').fadeIn(800);
 }
 
-function save_page(page, src) {
-	story_page_id = page;
+// 文本選定
+function save_page(id, src) {
+	story_page_id = id;
 	story_page_src = src;
-	story_index_least = document.getElementById(page).children.length-1;
+	story_index_least = document.getElementById(id).children.length-1;
 	in_record();
 }
 
 // story的按鈕
-function story_back() {
-	story_index --;
-	to_page('cont', 'cont', 1);
+function story_change(para) {
+	story_index = story_index+para;
+	$('#cont').fadeOut(400);
+	setTimeout("document.getElementById('cont').src = story_page_src+'/index_'+story_index+'.html'", 400);
+
+	// 改變網址
+	shange_url();
 
 	if (localStorage.getItem("read_novel_"+'record') !== "false") {
 		localStorage.setItem("read_novel_record_"+story_page_id, story_index);
 		in_record();
 	}
-	judge_bts();
-}
-function story_next() {
-	story_index ++;
-	to_page('cont', 'cont', 1);
 
-	if (localStorage.getItem("read_novel_"+'record') !== "false") {
-		localStorage.setItem("read_novel_record_"+story_page_id, story_index);
-		in_record();
-	}
+	// 判斷與避免重複點選
 	judge_bts();
+	document.getElementById('story_bts').style.display = 'none';
+	setTimeout("$('#story_bts').fadeIn(400)", 400);
 }
+// 判斷是否有上/下一篇
 function judge_bts() {
-	document.getElementById('story_back').style.visibility = story_index == 1?'hidden':'visible';
-	document.getElementById('story_next').style.visibility = story_index == story_index_least?'hidden':'visible';
+	document.getElementById('story_back').style.visibility = story_index === 1?'hidden':'visible';
+	document.getElementById('story_next').style.visibility = story_index === story_index_least?'hidden':'visible';
 }
 
 // 闔上
 function story_close() {
-	$("#story").animate({width: '100vw', left: '0px', height: '2px', top: '50vh'}, 400);
+	$('#story').animate({width: '100vw', left: '0px', height: '2px', top: '50vh'}, 400);
 	setTimeout("story_close2()", 400);
+	$('#cont').fadeOut(400);
+
+	// 還原網址
+	history.pushState(null,null, location.pathname);
 }
 // 轉
 function story_close2() {
@@ -190,4 +234,9 @@ function story_close2() {
 		var ran = ran_j*(10+Math.random()*35);
 		document.getElementById('story').style.transform = "rotate("+ran+"deg)";
 	}
+}
+
+// story讀取完後執行
+function restart() {
+	$('#cont').slideDown(400);
 }

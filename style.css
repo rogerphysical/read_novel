@@ -6,7 +6,7 @@
 body {
 	margin: 0;
 	overflow: hidden;
-	background-color: #EFF;
+	background-color: #FBFFFF;
 	/*font-family: cursive;*/
 }
 
@@ -23,6 +23,15 @@ body {
 	z-index: -1;
 	overflow: hidden;
 }
+
+#cont {
+	width: 100%;
+	height: calc(100% - 60px);
+	margin-top: 0px;
+	border: 0px;
+	display: none;
+}
+
 #story_bts {
 	width: 100%;
 	height: 60px;
@@ -30,7 +39,6 @@ body {
 	left: 0px;
 	bottom: 0px;
 	padding: 5px;
-	/*display: none;*/
 }
 .story_bt {
 	height: 40px;
@@ -99,7 +107,7 @@ body {
 	overflow: scroll;
 	overflow-x: hidden;
 	overflow-y: auto;
-	background-color: #EFF;
+	background-color: #FBFFFF;
 	display: none;
 }
 .items_name {

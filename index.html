@@ -10,10 +10,10 @@
 	</head>
 	<body>
 		<div id="story">
-			<iframe id="cont" src="" style="width: 100%; height: calc(100% - 60px); border: 0px; background-color: #000;"></iframe>
+			<iframe id="cont" src="" onload="restart()"></iframe>
 			<div id="story_bts">
-				<div id="story_back" class="story_bt" onclick="story_back()">back</div>
-				<div id="story_next" class="story_bt" onclick="story_next()">next</div>
+				<div id="story_back" class="story_bt" onclick="story_change(-1)">back</div>
+				<div id="story_next" class="story_bt" onclick="story_change(1)">next</div>
 				<div id="story_close" class="story_bt" onclick="story_close()">close</div>
 			</div>
 
@@ -150,21 +150,50 @@
 					<div class="items_name_pic">
 						<img src="images/unknown_radius.ico">
 					</div>
-					<div class="items_name_l">文本閱讀二</div>
+					<div class="items_name_l">唯一選項</div>
 				</div>
 
 				<div class="items_name" onclick="record(3)">
 					<div class="items_name_pic">
 						<img src="images/unknown_radius.ico">
 					</div>
-					<div class="items_name_l">文本閱讀三</div>
+					<div class="items_name_l">圖文並存</div>
 				</div>
 
 				<div class="items_name" onclick="record(4)">
 					<div class="items_name_pic">
 						<img src="images/unknown_radius.ico">
 					</div>
-					<div class="items_name_l">文本閱讀四</div>
+					<div class="items_name_l">循序漸進</div>
+				</div>
+
+			</div>
+
+			<div id="page2" class="items">
+				<div class="items_name" onclick="to_page2('page2', 'page')">
+					<div class="items_name_pic">
+						<img src="images/unknown_radius.ico">
+					</div>
+					<div class="items_name_l">回主頁</div>
+					<div class="items_name_r items_name_r2">&Delta;</div>
+				</div>
+
+<!-- 				<div class="items_name" onclick="record(1)">
+					<div class="items_name_pic">
+						<img src="images/unknown_radius.ico">
+					</div>
+					<div class="items_name_l">楔子</div>
+				</div> -->
+
+			</div>
+
+			<div id="page3" class="items">
+				<div class="items_name" onclick="to_page2('page3', 'page')">
+					<div class="items_name_pic">
+						<img src="images/unknown_radius.ico">
+					</div>
+					<div class="items_name_l">回主頁</div>
+					<div class="items_name_r items_name_r2">&Delta;</div>
 				</div>
 
 			</div>
