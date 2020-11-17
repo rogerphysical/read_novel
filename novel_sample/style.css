@@ -38,6 +38,7 @@ body {
 	padding-left: 24px;
 	padding-right: 24px;
 	background-color: #FD6;
+	color: #000;
 	cursor: pointer;
 	user-select: none;
 }
