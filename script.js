@@ -191,7 +191,7 @@ function save_page(id, src) {
 	in_record();
 }
 
-// story的按鈕
+// story的按鈕(para=1/-1)
 function story_change(para) {
 	story_index = story_index+para;
 	$('#cont').fadeOut(400);
@@ -209,6 +209,7 @@ function story_change(para) {
 	judge_bts();
 	document.getElementById('story_bts').style.display = 'none';
 	setTimeout("$('#story_bts').fadeIn(400)", 400);
+	to_top();
 }
 // 判斷是否有上/下一篇
 function judge_bts() {
