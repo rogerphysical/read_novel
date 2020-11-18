@@ -5,7 +5,7 @@
 }
 body {
 	margin: 0;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	background-color: #FBFFFF;
 	/*font-family: cursive;*/
 }
@@ -18,7 +18,7 @@ body {
 	top: 50vh;
 	left: 0px;
 	transition: transform 0.4s linear;
-	transform: rotate(0deg);
+	transform: rotate(0rad);
 	background-color: #888;
 	z-index: -1;
 	overflow: hidden;
@@ -65,7 +65,7 @@ body {
 
 #title {
 	width: 100%;
-	height: 200px;
+	height: 28vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -73,7 +73,7 @@ body {
 }
 #item {
 	width: 440px;
-	height: calc(100vh - 280px);
+	height: 60vh;
 	margin: auto;
 	border-radius: 10px;
 	overflow: hidden;
@@ -82,13 +82,16 @@ body {
 	position: relative;
 }
 #footer {
-	height: 100px;
-	line-height: 100px;
+	height: 12vh;
+	line-height: 12vh;
 	text-align: center;
+	
 	background-color: #848;
 	color: #000;
 	font-size: 20px;
 	font-family: cursive;
+
+	display: none;
 }
 @media (max-width: 440px) {
 	#item {

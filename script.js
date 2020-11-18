@@ -65,9 +65,8 @@ function to_top() {
 	$('html, body').animate({scrollTop: 0}, 400);
 }
 function show_copyright() {
-	$('html, body').animate({scrollTop: $('body').height()-$(window).height()}, 1000);
-	setTimeout("$('html, body').animate({scrollTop: 0}, 1000)", 2000)
-	history.pushState(null,null, "?123=456");
+	$('#footer').slideDown(400);
+	setTimeout("$('#footer').slideUp(400)", 1400);
 }
 
 function to_page(a, b) {
@@ -229,10 +228,14 @@ function story_close() {
 // 轉
 function story_close2() {
 	document.getElementById('story').style.zIndex = -1;
-	if ($(window).width() > 768) {
+	var win_w = $(window).width();
+	if (win_w > 768) {
+		var win_h = $(window).height();
+
 		var ran_j = (Math.random() < 0.5)?-1:1;
-		var ran = ran_j*(10+Math.random()*35);
-		document.getElementById('story').style.transform = "rotate("+ran+"deg)";
+		var rad = (win_w > win_h)?Math.asin(win_h/win_w):Math.PI/2;
+		var ran = ran_j*(Math.random()*rad);
+		document.getElementById('story').style.transform = "rotate("+ran+"rad)";
 	}
 }
 
