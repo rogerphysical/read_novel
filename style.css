@@ -82,13 +82,12 @@ body {
 	position: relative;
 }
 #footer {
-	height: 12vh;
-	line-height: 12vh;
+	height: 58px;
+	padding: 15px;
+	line-height: 28px;
 	text-align: center;
-	
-	background-color: #848;
-	color: #000;
-	font-size: 20px;
+
+	color: #404;
 	font-family: cursive;
 
 	display: none;
