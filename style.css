@@ -72,7 +72,8 @@ body {
 	font-size: 40px;
 }
 #item {
-	width: 440px;
+	width: 100%;
+	max-width: 440px;
 	height: 60vh;
 	margin: auto;
 	border-radius: 10px;
@@ -91,11 +92,6 @@ body {
 	font-family: cursive;
 
 	display: none;
-}
-@media (max-width: 440px) {
-	#item {
-		width: 100%;
-	}
 }
 
 /*選項*/
