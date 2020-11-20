@@ -40,7 +40,15 @@
 					<div class="items_name_r items_name_r1">&Delta;</div>
 				</div>
 
-				<div class="items_name" onclick="to_page('page', 'page2'), save_page('page2', 'novel_cont')">
+				<div class="items_name" onclick="to_page('page', 'page2'), save_page('page2', 'novel_forte')">
+					<div class="items_name_pic">
+						<img src="images/book.png">
+					</div>
+					<div class="items_name_l">長篇</div>
+					<div class="items_name_r items_name_r1">&Delta;</div>
+				</div>
+
+				<div class="items_name" onclick="to_page('page', 'page3'), save_page('page3', 'novel_piano')">
 					<div class="items_name_pic">
 						<img src="images/book.png">
 					</div>
@@ -163,6 +171,13 @@
 					<div class="items_name_l">循序漸進</div>
 				</div>
 
+				<div class="items_name" onclick="record(5)">
+					<div class="items_name_pic">
+						<img src="images/paper2.png">
+					</div>
+					<div class="items_name_l">尚未完成</div>
+				</div>
+
 			</div>
 
 			<div id="page2" class="items">
@@ -174,18 +189,29 @@
 					<div class="items_name_r items_name_r2">&Delta;</div>
 				</div>
 
-				<div class="items_name" onclick="">
-					<div class="items_name_pic">
-						<img src="images/paper.png">
-					</div>
-					<div class="items_name_l">已完成</div>
-				</div>
-
-				<div class="items_name" onclick="">
+				<div class="items_name" onclick="record(1)">
 					<div class="items_name_pic">
 						<img src="images/paper2.png">
 					</div>
-					<div class="items_name_l">未完成</div>
+					<div class="items_name_l">楔子</div>
+				</div>
+
+			</div>
+
+			<div id="page3" class="items">
+				<div class="items_name" onclick="to_page2('page3', 'page')">
+					<div class="items_name_pic">
+						<img src="images/magic_square2.ico">
+					</div>
+					<div class="items_name_l">回主頁</div>
+					<div class="items_name_r items_name_r2">&Delta;</div>
+				</div>
+
+				<div class="items_name" onclick="record(1)">
+					<div class="items_name_pic">
+						<img src="images/paper2.png">
+					</div>
+					<div class="items_name_l">前奏</div>
 				</div>
 
 			</div>
