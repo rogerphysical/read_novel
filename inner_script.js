@@ -14,23 +14,23 @@ window.onload = function() {
 	}
 }
 
-// this 要改變的id 是否為圖 紀錄當前位置id的存放位置
-function para_select_item(a, choise_id, pic=0, or_pos=0) {
+// this 要改變的id 紀錄當前位置id的存放位置 是否為圖
+function para_select_item(a, choise_id, or_pos=0, pic=0) {
 	var or_id = a.parentNode.children[or_pos];
 	if (pic !== 0) {
-		document.getElementById(or_id.innerHTML).style.display = "none";
+		$('#'+or_id.innerHTML).fadeOut(400);
 	}
-	document.getElementById(choise_id).style.display = "block";
+	$('#'+choise_id).fadeIn(400);
+
 	// 選後按鈕消失
 	a.parentNode.style.display = "none";
-
 	// 顯示重選按鈕
 	a.parentNode.parentNode.children[0].style.display = "block";
 	// 更新已顯示的id
 	or_id.innerHTML = choise_id;
 }
-// this pic:id顯現(否則為0) 紀錄當前位置id的存放位置 是否把自己none
-function para_select_reset(a, pic=0, or_pos=0, exist=0) {
+// this 紀錄當前位置id的存放位置 pic:id顯現(否則為0) 是否把自己none
+function para_select_reset(a, or_pos=0, pic=0, exist=0) {
 	if (exist === 0) {
 		a.style.display = "none";
 	}
@@ -54,7 +54,9 @@ function para_change(a, id, change_to, min=-Infinity, max=Infinity, min_id=0, mi
 			// 若為多個 隨機挑取一個
 			var min_id_doc = document.getElementById(min_id);
 			if (min_id_doc.children.length > 1) {
+				// 將已顯示的關閉
 				min_id_doc.children[min_id_doc.children[0].innerHTML].style.display = "none";
+				// 選出新的顯示
 				var choise_index = Math.floor(1+Math.random()*(min_id_doc.children.length-1));
 				min_id_doc.children[choise_index].style.display = "block";
 				min_id_doc.children[0].innerHTML = choise_index;

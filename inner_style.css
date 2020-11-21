@@ -4,7 +4,6 @@
 }
 body {
 	margin: 0;
-	/*overflow: hidden;*/
 	font-size: 24px;
 	background-color: #FFF;
 	color: #000;
@@ -21,8 +20,8 @@ body {
 	margin: 20px;
 }
 .para_select {
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
 	overflow: hidden;
 }
 .para_select_item {
@@ -30,8 +29,7 @@ body {
 	margin: 5px;
 	border-radius: 10px;
 	padding: 10px;
-	padding-left: 24px;
-	padding-right: 24px;
+
 	background-color: #FD6;
 	color: #000;
 	cursor: pointer;
@@ -44,12 +42,15 @@ body {
 
 .para_none {
 	display: none;
-	overflow: hidden;
 }
 
 .para_pic {
+	position: absolute;
+	top: 0%;
+	left: 0%;
 	width: 100%;
-	height: calc(50vh - 60px);
+	height: 100%;
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -59,19 +60,18 @@ body {
 	max-height: 100%;
 }
 
-/*分視窗 area2/pic與標題共處*/
-.para_area {
-	width: 100%;
-	height: 50vh;
-	border-top: 2px #404 solid;
-	overflow: scroll;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-.para_area2 {
+/*分視窗 area與標題共處*/
+.para_area, .para_area2 {
 	width: 100%;
 	height: calc(50vh - 60px);
+	border-top: 2px #404 solid;
+	
 	overflow: scroll;
 	overflow-x: hidden;
 	overflow-y: auto;
+
+	position: relative;
+}
+.para_area2 {
+	height: 50vh;
 }
