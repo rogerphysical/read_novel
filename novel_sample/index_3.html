@@ -10,33 +10,43 @@
 	</head>
 	<body>
 		<div class="title">圖文並存</div>
-		<div class="para_pic">
-			<img id="1_3_select_1_0_pic" src="images/magic_square.png">
-			<img id="1_3_select_1_1_pic" class="para_none" src="images/magic_square1.png">
-			<img id="1_3_select_1_2_pic" class="para_none" src="images/magic_square2.png">
+		<div class="para_area">
+			<div class="para_pic">
+				<img id="select_1_0_pic" src="images/magic_square.png">
+			</div>
+
+			<div class="para_pic">
+				<img id="select_1_1_pic" class="para_none" src="images/magic_square1.png">
+			</div>
+
+			<div class="para_pic">
+				<img id="select_1_2_pic" class="para_none" src="images/magic_square2.png">
+			</div>
+
 		</div>
 		
-		<div class="para_area">
+		<div class="para_area2">
 			<div class="para">第1段</div>
 			<div class="para">第2段</div>
 			<div class="para">第3段</div>
 			<div class="para">第4段</div>
 			<div class="para_select">
-				<div class="para para_select_item para_none" onclick="para_select_reset(this, '1_3_select_1_0_pic', 1), para_select_reset(this)">重選</div>
-				<div class="para_select">
+				<div class="para_select_item para_none" onclick="para_select_reset(this, 1, 'select_1_0_pic'), para_select_reset(this)">重選</div>
+				<div>
+					<!-- 上為段落id 下為圖片id -->
 					<div class="para_none"></div>
-					<div class="para_none">1_3_select_1_0_pic</div>
-					<div class="para para_select_item" onclick="para_select_item(this, '1_3_select_1_1_pic', 1, 1), para_select_item(this, '1_3_select_1_1')">選項一</div>
-					<div class="para para_select_item" onclick="para_select_item(this, '1_3_select_1_2_pic', 1, 1), para_select_item(this, '1_3_select_1_2')">選項二</div>
+					<div class="para_none">select_1_0_pic</div>
+					<div class="para_select_item" onclick="para_select_item(this, 'select_1_1_pic', 1, 1), para_select_item(this, 'select_1_1')">選項一</div>
+					<div class="para_select_item" onclick="para_select_item(this, 'select_1_2_pic', 1, 1), para_select_item(this, 'select_1_2')">選項二</div>
 				</div>
 			</div>
-			<div id="1_3_select_1_1" class="para_none">
+			<div id="select_1_1" class="para_none">
 				<div class="para">第5_1段</div>
 				<div class="para">第6_1段</div>
 				<div class="para">第7_1段</div>
 				<div class="para">第8_1段</div>
 			</div>
-			<div id="1_3_select_1_2" class="para_none">
+			<div id="select_1_2" class="para_none">
 				<div class="para">第5段</div>
 				<div class="para">第6段</div>
 				<div class="para">第7段</div>

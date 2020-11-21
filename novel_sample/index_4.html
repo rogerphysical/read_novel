@@ -10,51 +10,66 @@
 	</head>
 	<body>
 		<div class="title">循序漸進</div>
-		<div class="para_area2">
-			<div class="para">100%則成功: <span id="1_4_change_1">0</span>%</div>
-			<div class="para">0%或100%則失敗: <span id="1_4_change_2">50</span>%</div>
-			<div class="para">選擇次數:<span id="1_4_change_3">0</span>次</div>
-		</div>
 		<div class="para_area">
+			<div class="para">100%則成功: <span id="change_1">0</span>%</div>
+			<div class="para">0%或100%則失敗: <span id="change_2">50</span>%</div>
+			<div class="para">選擇次數:<span id="change_3">0</span>次</div>
+
+			<div style="height: 100px;"></div>
+		</div>
+
+		<div class="para_area2">
 			<div class="para">第1段</div>
 			<div class="para">第2段</div>
 			<div class="para_select">
-				<div class="para para_select_item" onclick="para_select_reset(this, 0, 0, 1), para_change_reset('1_4_change_1', 0), para_change_reset('1_4_change_2', 50), para_change_reset('1_4_change_3', 0)">重新</div>
-				<div class="para_select">
+				<div class="para_select_item" onclick="para_select_reset(this, 0, 0, 1), para_change_reset('change_1', 0), para_change_reset('change_2', 50), para_change_reset('change_3', 0)">重新</div>
+				<div>
 					<!-- 下行為存放目前開啟的div id -->
-					<div class="para_none">1_4_select_1_0_0</div>
-					<div class="para para para_select_item" onclick="para_change(this, '1_4_change_1', change_to_num('1_4_change_1')+change_to_num2(14, 4), 0, 100, '1_4_select_1_1', '1_4_select_1_1', '1_4_select_1_0_1', 0, 0, 1), para_change(this, '1_4_change_2', change_to_num('1_4_change_2')+change_to_num2(20, 4), 0, 100, 0, 0, '1_4_select_1_0_2', 0, 0, 1), para_change(this, '1_4_change_3', change_to_num('1_4_change_3')+1)">上+14%、下+20%</div>
-					<div class="para para_select_item" onclick="para_change(this, '1_4_change_1', change_to_num('1_4_change_1')+change_to_num2(-10, 4), 0, 100, '1_4_select_1_2', '1_4_select_1_2', '1_4_select_1_0_1', 0, 0, 1), para_change(this, '1_4_change_2', change_to_num('1_4_change_2')+change_to_num2(-24, 4), 0, 100, '1_4_select_1_0_3', 0, 0, 1, 0, 0), para_change(this, '1_4_change_3', change_to_num('1_4_change_3')+1)">上-10%、下-24%</div>
+					<div class="para_none">select_1_0_0</div>
+					<div class="para_select_item" onclick="para_change(this, 'change_1', change_to_num('change_1')+change_to_num2(14, 4), 0, 100, 'select_1_1', 'select_1_1', 'select_1_0_1', 0, 0, 1), para_change(this, 'change_2', change_to_num('change_2')+change_to_num2(20, 4), 0, 100, 0, 0, 'select_1_0_2', 0, 0, 1), para_change(this, 'change_3', change_to_num('change_3')+1)">上+14%、下+20%</div>
+					<div class="para_select_item" onclick="para_change(this, 'change_1', change_to_num('change_1')+change_to_num2(-10, 4), 0, 100, 'select_1_2', 'select_1_2', 'select_1_0_1', 0, 0, 1), para_change(this, 'change_2', change_to_num('change_2')+change_to_num2(-24, 4), 0, 100, 'select_1_0_3', 0, 0, 1, 0, 0), para_change(this, 'change_3', change_to_num('change_3')+1)">上-10%、下-24%</div>
 				</div>
 			</div>
 			<!-- 下行為起始的div -->
-			<div id="1_4_select_1_0_0"></div>
-			<div id="1_4_select_1_0_1" class="para_none">
+			<div id="select_1_0_0"></div>
+			<div id="select_1_0_1" class="para_none">
 				<!-- 若兩段以上 用div包住 如下 -->
 				<div>
-					<div class="para">第3段:成功</div>
-					<div class="para">第4段</div>
+					<div class="para">第3段</div>
+					<div class="para">第4段:成功</div>
 				</div>
 			</div>
-			<div id="1_4_select_1_0_2" class="para_none">
+			<div id="select_1_0_2" class="para_none">
 				<!-- 若一段 直接用即可 如下 -->
 				<div class="para">第3_1段:失敗</div>
 			</div>
-			<div id="1_4_select_1_0_3" class="para_none">
+			<div id="select_1_0_3" class="para_none">
 				<!-- 若一段 直接用即可 如下 -->
 				<div class="para">第3_2段:失敗</div>
 			</div>
 
-			<div id="1_4_select_1_1" class="para_none">
-				<!-- 若多個走向 創建第一行 在直接用即可 如下 -->
+			<div id="select_1_1" class="para_none">
+				<!-- 若多個走向(下方為4個) 創建第一行(存取已顯示index) 如下 -->
 				<div class="para_none">0</div>
-				<div class="para para_none">第2_1_1段</div>
-				<div class="para para_none">第2_1_2段</div>
+				<!-- 1 -->
+				<div class="para_none">
+					<div class="para">第2_1_1_1段</div>
+					<div class="para">第2_1_1_2段</div>
+				</div>
+				<!-- 2 -->
+				<div class="para_none">
+					<div class="para">第2_1_2_1段</div>
+					<div class="para">第2_1_2_2段</div>
+					<div class="para">第2_1_2_3段</div>
+					<div class="para">第2_1_2_4段</div>
+				</div>
+				<!-- 3 -->
 				<div class="para para_none">第2_1_3段</div>
+				<!-- 4 -->
 				<div class="para para_none">第2_1_4段</div>
 			</div>
 
-			<div id="1_4_select_1_2" class="para_none">
+			<div id="select_1_2" class="para_none">
 				<div class="para_none">0</div>
 				<div class="para para_none">第2_2_1段</div>
 				<div class="para para_none">第2_2_2段</div>
