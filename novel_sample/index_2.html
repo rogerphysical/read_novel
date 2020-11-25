@@ -13,14 +13,12 @@
 		<div class="para">第1段</div>
 		<div class="para">第2段</div>
 		<div class="para_select">
-			<div class="para_select_item para_none" onclick="para_select_reset(this)">重選</div>
+			<div class="para_select_item para_none" onclick="para_select_reset(this, 'select_1')">重選</div>
 			<div>
-				<!-- 重選後需隱藏的段落id -->
-				<div class="para_none"></div>
-				<div class="para_select_item" onclick="para_select_item(this, 'select_1_1')">選項一</div>
-				<div class="para_select_item" onclick="para_select_item(this, 'select_1_2')">選項二</div>
-				<div class="para_select_item" onclick="para_select_item(this, 'select_1_3')">選項三</div>
-				<div class="para_select_item" onclick="para_select_item(this, 'select_1_4')">選項四</div>
+				<div class="para_select_item" onclick="para_select_item(this, 'select_1', 'select_1_1')">選項一</div>
+				<div class="para_select_item" onclick="para_select_item(this, 'select_1', 'select_1_2')">選項二</div>
+				<div class="para_select_item" onclick="para_select_item(this, 'select_1', 'select_1_3')">選項三</div>
+				<div class="para_select_item" onclick="para_select_item(this, 'select_1', 'select_1_4')">選項四</div>
 			</div>
 		</div>
 		<div id="select_1_1" class="para_none">
@@ -47,13 +45,12 @@
 			<div class="para">第5段</div>
 			<div class="para">第6段</div>
 			<div class="para_select">
-				<div class="para_select_item para_none" onclick="para_select_reset(this)">重選</div>
+				<div class="para_select_item para_none" onclick="para_select_reset(this, 'select_2')">重選</div>
 				<div>
-					<div class="para_none"></div>
-					<div class="para_select_item" onclick="para_select_item(this, 'select_2_1')">選項一</div>
-					<div class="para_select_item" onclick="para_select_item(this, 'select_2_2')">選項二</div>
-					<div class="para_select_item" onclick="para_select_item(this, 'select_2_3')">選項三</div>
-					<div class="para_select_item" onclick="para_select_item(this, 'select_2_4')">選項四</div>
+					<div class="para_select_item" onclick="para_select_item(this, 'select_2', 'select_2_1')">選項一</div>
+					<div class="para_select_item" onclick="para_select_item(this, 'select_2', 'select_2_2')">選項二</div>
+					<div class="para_select_item" onclick="para_select_item(this, 'select_2', 'select_2_3')">選項三</div>
+					<div class="para_select_item" onclick="para_select_item(this, 'select_2', 'select_2_4')">選項四</div>
 				</div>
 			</div>
 			<div id="select_2_1" class="para_none">
@@ -81,8 +78,7 @@
 				<div class="para">第10_3段</div>
 			</div>
 		</div>
-		
 
-		<div style="height: 100px;"></div>
+		<div class="empty"></div>
 	</body>
 </html>
