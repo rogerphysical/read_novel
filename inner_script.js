@@ -14,11 +14,14 @@ window.onload = function() {
 	}
 }
 
-// this 要改變的id 紀錄當前位置id的存放位置 是否為圖
-function para_select_item(a, choise_id, or_pos=0, pic=0) {
-	var or_id = a.parentNode.children[or_pos];
-	if (pic !== 0) {
-		$('#'+or_id.innerHTML).fadeOut(400);
+// 存放處
+var id = {};
+var index = {};
+
+// this 要改變的id 紀錄當前位置id的key 是否有起始值
+function para_select_item(a, key, choise_id, or_id=0) {
+	if (or_id !== 0) {
+		$('#'+or_id).fadeOut(400);
 	}
 	$('#'+choise_id).fadeIn(400);
 
@@ -27,89 +30,97 @@ function para_select_item(a, choise_id, or_pos=0, pic=0) {
 	// 顯示重選按鈕
 	a.parentNode.parentNode.children[0].style.display = "block";
 	// 更新已顯示的id
-	or_id.innerHTML = choise_id;
+	id[key] = choise_id;
 }
 // this 紀錄當前位置id的存放位置 pic:id顯現(否則為0) 是否把自己none
-function para_select_reset(a, or_pos=0, pic=0, exist=0) {
+function para_select_reset(a, key, or_id=0, exist=0) {
+	// 將重選隱藏
 	if (exist === 0) {
 		a.style.display = "none";
 	}
+
+	// 顯示選項
 	var p_c = a.parentNode.children[1];
-	p_c.style.display = "block";
-	var or_id = a.parentNode.children[1].children[or_pos];
-	document.getElementById(or_id.innerHTML).style.display = "none";
-	if (pic !== 0) {
-		document.getElementById(pic).style.display = "block";
-		or_id.innerHTML = pic;
+	if (p_c.style.display === 'none') {
+		p_c.style.display = "block";
+	}
+	
+	// 之後顯示的隱藏、原本隱藏的顯示
+	if (id[key]) {
+		document.getElementById(id[key]).style.display = "none";
+		if (or_id !== 0) {
+			document.getElementById(or_id).style.display = "block";
+			id[key] = or_id;
+		}
 	}
 }
-function para_change(a, id, change_to, min=-Infinity, max=Infinity, min_id=0, mid_id=0, max_id=0, min_end=0, mid_end=0, max_end=0) {
-	var or_id = a.parentNode.children[0];
-
+function para_change(a, key, id, change_to, min=-Infinity, max=Infinity, min_id=0, mid_id=0, max_id=0, min_end=0, mid_end=0, max_end=0, or_id=0) {
 	if (change_to <= min) {
 		document.getElementById(id).innerHTML = min;
-		if (min_id !== 0) {
-			document.getElementById(or_id.innerHTML).style.display = "none";
-
-			// 若為多個 隨機挑取一個
-			var min_id_doc = document.getElementById(min_id);
-			if (min_id_doc.children.length > 1) {
-				// 將已顯示的關閉
-				min_id_doc.children[min_id_doc.children[0].innerHTML].style.display = "none";
-				// 選出新的顯示
-				var choise_index = Math.floor(1+Math.random()*(min_id_doc.children.length-1));
-				min_id_doc.children[choise_index].style.display = "block";
-				min_id_doc.children[0].innerHTML = choise_index;
-			}
-
-			document.getElementById(min_id).style.display = "block";
-			or_id.innerHTML = min_id;
-			if (min_end !== 0) {
-				a.parentNode.style.display = "none";
-			}
-		}
+		para_change2(a, key, min_id, min_end, or_id);
 	}
 	else if (change_to >= max) {
 		document.getElementById(id).innerHTML = max;
-		if (max_id !== 0) {
-			document.getElementById(or_id.innerHTML).style.display = "none";
-
-			var max_id_doc = document.getElementById(max_id);
-			if (max_id_doc.children.length > 1) {
-				max_id_doc.children[max_id_doc.children[0].innerHTML].style.display = "none";
-				var choise_index = Math.floor(1+Math.random()*(max_id_doc.children.length-1));
-				max_id_doc.children[choise_index].style.display = "block";
-				max_id_doc.children[0].innerHTML = choise_index;
-			}
-
-			document.getElementById(max_id).style.display = "block";
-			or_id.innerHTML = max_id;
-			if (max_end !== 0) {
-				a.parentNode.style.display = "none";
-			}
-		}
+		para_change2(a, key, max_id, max_end, or_id);
 	}
 	else {
 		document.getElementById(id).innerHTML = change_to;
-		if (mid_id !== 0) {
-			document.getElementById(or_id.innerHTML).style.display = "none";
-
-			var mid_id_doc = document.getElementById(mid_id);
-			if (mid_id_doc.children.length > 1) {
-				mid_id_doc.children[mid_id_doc.children[0].innerHTML].style.display = "none";
-				var choise_index = Math.floor(1+Math.random()*(mid_id_doc.children.length-1));
-				mid_id_doc.children[choise_index].style.display = "block";
-				mid_id_doc.children[0].innerHTML = choise_index;
+		para_change2(a, key, mid_id, mid_end, or_id);
+	}
+}
+function para_change2(a, key, xxx_id, xxx_end, or_id) {
+	if (xxx_id !== 0) {
+			// 隱藏現在顯示的
+		if (id[key] || or_id !== 0) {
+			if (id[key]) {
+				document.getElementById(id[key]).style.display = 'none';
 			}
-
-			document.getElementById(mid_id).style.display = "block";
-			or_id.innerHTML = mid_id;
-			if (mid_end !== 0) {
-				a.parentNode.style.display = "none";
+			else {
+				document.getElementById(or_id).style.display = 'none';
 			}
+		}
+		// 若為多個 隨機挑取一個
+		var xxx_id_doc = document.getElementById(xxx_id);
+		if (xxx_id_doc.children.length > 1) {
+			// 將已顯示的關閉
+			if (index[xxx_id]) {
+				xxx_id_doc.children[index[xxx_id]].style.display = "none";
+			}
+			var choise_index = parseInt(Math.random()*(xxx_id_doc.children.length-1));
+			// 顯示內層
+			xxx_id_doc.children[choise_index].style.display = "block";
+			// 更新已顯示的id
+			index[xxx_id] = choise_index;
+		}
+
+		// 顯示外層
+		document.getElementById(xxx_id).style.display = "block";
+		// 更新已顯示的id
+		id[key] = xxx_id;
+		// 結束符
+		if (xxx_end !== 0) {
+			a.parentNode.style.display = "none";
 		}
 	}
 }
+
+// 按鈕次數
+function buttom_times(id, change_to) {
+	const id_doc = document.getElementById(id);
+	if (change_to > 0) {
+		id_doc.innerHTML = change_to;
+		if (id_doc.parentNode.style.visibility === 'hidden') {
+			id_doc.parentNode.style.visibility = 'visible';
+		}
+	}
+	else {
+		id_doc.innerHTML = 0;
+		if (id_doc.parentNode.style.visibility !== 'hidden') {
+			id_doc.parentNode.style.visibility = 'hidden';
+		}
+	}
+}
+
 function para_change_reset(id, or) {
 	document.getElementById(id).innerHTML = or;
 }

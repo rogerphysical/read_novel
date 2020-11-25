@@ -75,3 +75,8 @@ body {
 .para_area2 {
 	height: 50vh;
 }
+
+/*尾端留白*/
+.empty {
+	height: 80px;
+}
