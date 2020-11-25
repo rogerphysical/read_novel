@@ -86,7 +86,7 @@ function para_change2(a, key, xxx_id, xxx_end, or_id) {
 			if (index[xxx_id]) {
 				xxx_id_doc.children[index[xxx_id]].style.display = "none";
 			}
-			var choise_index = parseInt(Math.random()*(xxx_id_doc.children.length-1));
+			var choise_index = parseInt(Math.random()*xxx_id_doc.children.length);
 			// 顯示內層
 			xxx_id_doc.children[choise_index].style.display = "block";
 			// 更新已顯示的id
