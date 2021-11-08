@@ -16,9 +16,11 @@ body {
 	position: absolute;
 	top: 50vh;
 	left: 0px;
+	padding-left: 40px;
+	padding-right: 40px;
 	transition: transform 0.4s linear;
 	transform: rotate(0rad);
-	background-color: #888;
+	background-color: #EEE;
 	z-index: -1;
 	overflow: hidden;
 }
@@ -38,6 +40,8 @@ body {
 	left: 0px;
 	bottom: 0px;
 	padding: 5px;
+
+	background-color: #888;
 }
 .story_bt {
 	height: 40px;
