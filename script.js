@@ -53,6 +53,28 @@ window.onload = function() {
 	}
 }
 
+// 快捷鍵
+function key_point(ev) {
+	// console.log(ev.keyCode);
+	if (story_index !== 0) {
+		switch (ev.keyCode) {
+			case 81:
+				story_close();
+				break;
+			case 65:
+				if (story_index > 1) {
+					story_change(-1);
+				}
+				break;
+			case 83:
+				if (story_index < story_index_least) {
+					story_change(1);
+				}
+				break;
+		}			
+	}
+}
+
 // 改變網址
 function shange_url() {
 	var str = '?id='+story_page_id;
@@ -178,7 +200,7 @@ function record(num) {
 function record2() {
 	var story_width = $(window).width() > 768?"80%":"100%";
 	var story_left = $(window).width() > 768?"10%":"0%";
-	$("#story").animate({width: story_width, left: story_left, height: '100vh', top: '0%'}, 400);
+	$("#story").animate({width: story_width, left: story_left, height: '100dvh', top: '0%'}, 400);
 
 	judge_bts();
 }
@@ -219,6 +241,7 @@ function judge_bts() {
 
 // 闔上
 function story_close() {
+	story_index = 0;
 	$('#story').animate({width: '100vw', left: '0px', height: '2px', top: '50vh'}, 400);
 	setTimeout("story_close2()", 400);
 	$('#cont').fadeOut(400);
@@ -240,7 +263,7 @@ function story_close2() {
 	}
 }
 
-// story讀取完後執行
+// story讀取完後執行(開啟內容)
 function restart() {
 	$('#cont').slideDown(400);
 }
