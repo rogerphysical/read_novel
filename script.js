@@ -9,9 +9,15 @@ window.onload = function() {
 		size_selected.options[size_index].selected = true;
 	}
 	if (localStorage.getItem("read_novel_"+'font_color')) {
-		var color_index = parseInt(JSON.parse(localStorage.getItem("read_novel_"+'font_color'))['index']);
+        var color_json = JSON.parse(localStorage.getItem("read_novel_"+'font_color'));
+
+		var color_index = parseInt(color_json['index']);
 		var color_selected = document.getElementById('font_color');
 		color_selected.options[color_index].selected = true;
+
+		document.body.style.backgroundColor = color_json['backgroundColor'];
+		document.body.style.color = color_json['color'];
+        $(".items").css('backgroundColor', color_json['backgroundColor'])
 	}
 	if (localStorage.getItem("read_novel_"+'record')) {
 		var par = document.getElementById("record_judge").parentNode;
@@ -117,6 +123,11 @@ function font_color(a) {
 		'color': a.options[a.value].style.color
 	}
 	localStorage.setItem("read_novel_"+"font_color", JSON.stringify(save));
+
+    document.body.style.backgroundColor = save['backgroundColor'];
+    document.body.style.color = save['color'];
+    $(".items").css('backgroundColor', save['backgroundColor'])
+
 }
 
 function use_record(a) {

@@ -64,7 +64,7 @@ body {
 .para_area, .para_area2 {
 	width: 100%;
 	height: calc(50vh - 60px);
-	border-top: 2px #404 solid;
+	border-top: 2px #888 solid;
 	
 	overflow: scroll;
 	overflow-x: hidden;

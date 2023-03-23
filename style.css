@@ -5,7 +5,7 @@
 }
 body {
 	margin: 0;
-	background-color: #FBFFFF;
+	background-color: #FFF;
 	/*font-family: cursive;*/
 }
 
@@ -16,11 +16,11 @@ body {
 	position: absolute;
 	top: 50vh;
 	left: 0px;
-	padding-left: 40px;
-	padding-right: 40px;
+	/* padding-left: 40px; */
+	/* padding-right: 40px; */
 	transition: transform 0.4s linear;
 	transform: rotate(0rad);
-	background-color: #EEE;
+	background-color: #888;
 	z-index: -1;
 	overflow: hidden;
 }
@@ -42,6 +42,7 @@ body {
 	padding: 5px;
 
 	background-color: #888;
+    color: #000
 }
 .story_bt {
 	height: 40px;
@@ -67,6 +68,7 @@ body {
 #title {
 	width: 100%;
 	height: 28vh;
+	height: 28svh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -76,6 +78,7 @@ body {
 	width: 100%;
 	max-width: 440px;
 	height: 60vh;
+	height: 60svh;
 	margin: auto;
 	border-radius: 10px;
 	overflow: hidden;
@@ -106,7 +109,7 @@ body {
 	overflow: scroll;
 	overflow-x: hidden;
 	overflow-y: auto;
-	background-color: #FBFFFF;
+	background-color: #FFF;
 	display: none;
 }
 .items_name {
@@ -117,7 +120,7 @@ body {
 	cursor: pointer;
 }
 .items_name:hover {
-	background-color: #FD6;
+	background-color: #888;
 }
 
 .items_name_pic, .items_name_l, .items_name_r {
