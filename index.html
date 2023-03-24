@@ -9,13 +9,13 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 	</head>
-	<body>
+	<body onkeydown="key_point(event)">
 		<div id="story">
 			<iframe id="cont" src="" onload="restart()"></iframe>
 			<div id="story_bts">
-				<div id="story_back" class="story_bt" onclick="story_change(-1)">back</div>
-				<div id="story_next" class="story_bt" onclick="story_change(1)">next</div>
-				<div id="story_close" class="story_bt" onclick="story_close()">close</div>
+				<div id="story_back" class="story_bt" onclick="story_change(-1)" title="hotkey:a">back</div>
+				<div id="story_next" class="story_bt" onclick="story_change(1)" title="hotkey:s">next</div>
+				<div id="story_close" class="story_bt" onclick="story_close()" title="hotkey:q">close</div>
 			</div>
 
 		</div>
@@ -34,7 +34,7 @@
 
 				<div class="items_name" onclick="to_page('page', 'page1'), save_page('page1', 'novel_sample')">
 					<div class="items_name_pic">
-						<img src="images/book0.png">
+						<img src="images/book2.png">
 					</div>
 					<div class="items_name_l">編排方式</div>
 					<div class="items_name_r items_name_r1">&Delta;</div>
@@ -42,7 +42,7 @@
 
 				<div class="items_name" onclick="to_page('page', 'page2'), save_page('page2', 'novel_forte')">
 					<div class="items_name_pic">
-						<img src="images/book.png">
+						<img src="images/book1.png">
 					</div>
 					<div class="items_name_l">長篇</div>
 					<div class="items_name_r items_name_r1">&Delta;</div>
@@ -50,7 +50,7 @@
 
 				<div class="items_name" onclick="to_page('page', 'page3'), save_page('page3', 'novel_piano')">
 					<div class="items_name_pic">
-						<img src="images/book.png">
+						<img src="images/book1.png">
 					</div>
 					<div class="items_name_l">小品</div>
 					<div class="items_name_r items_name_r1">&Delta;</div>
@@ -102,10 +102,10 @@
 					<div class="items_name_l">顏色組合</div>
 					<select id="font_color" class="items_name_r" onchange="font_color(this)">
 						<option value="0" selected style="color: #000; background-color: #FFF;">白底黑字</option>
-						<option value="1" style="color: #FFF; background-color: #000;">黑底白字</option>
-						<option value="2" style="color: #000; background-color: #F8F8F8;">灰底黑字</option>
-						<option value="3" style="color: #114; background-color: #F8F8F8;">灰底藍字</option>
-						<option value="4" style="color: #141; background-color: #F8F8F8;">灰底綠字</option>
+						<option value="1" style="color: #FFF; background-color: #222;">黑底白字</option>
+						<!-- <option value="2" style="color: #000; background-color: #F8F8F8;">灰底黑字</option> -->
+						<!-- <option value="3" style="color: #114; background-color: #F8F8F8;">灰底藍字</option> -->
+						<!-- <option value="4" style="color: #141; background-color: #F8F8F8;">灰底綠字</option> -->
 					</select>
 				</div>
 
@@ -145,35 +145,35 @@
 
 				<div class="items_name" onclick="record(1)">
 					<div class="items_name_pic">
-						<img src="images/paper.png">
+						<img src="images/paper1.png">
 					</div>
 					<div class="items_name_l">文本閱讀</div>
 				</div>
 
 				<div class="items_name" onclick="record(2)">
 					<div class="items_name_pic">
-						<img src="images/paper.png">
+						<img src="images/paper1.png">
 					</div>
 					<div class="items_name_l">唯一選項</div>
 				</div>
 
 				<div class="items_name" onclick="record(3)">
 					<div class="items_name_pic">
-						<img src="images/paper.png">
+						<img src="images/paper1.png">
 					</div>
 					<div class="items_name_l">圖文並存</div>
 				</div>
 
 				<div class="items_name" onclick="record(4)">
 					<div class="items_name_pic">
-						<img src="images/paper.png">
+						<img src="images/paper1.png">
 					</div>
 					<div class="items_name_l">循序漸進</div>
 				</div>
 
 				<div class="items_name" onclick="record(5)">
 					<div class="items_name_pic">
-						<img src="images/paper.png">
+						<img src="images/paper1.png">
 					</div>
 					<div class="items_name_l">雙管齊下</div>
 				</div>
