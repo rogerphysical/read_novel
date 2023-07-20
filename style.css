@@ -94,7 +94,6 @@ body {
 	line-height: 28px;
 	text-align: center;
 
-	/* color: #404; */
 	font-family: cursive;
 
 	display: none;
@@ -152,15 +151,17 @@ body {
 	align-items: center;
 	justify-content: center;
 }
+
+/* arrow */
 .items_name_r1 {
-	transform: rotate(0deg);
+	transform: rotate(90deg);
 	transition: transform 0.4s;
 }
 .items_name:hover .items_name_r1 {
-	transform: rotate(-180deg);
+	transform: rotate(180deg);
 }
 .items_name_r2 {
-	transform: rotate(-180deg);
+	transform: rotate(-90deg);
 	transition: transform 0.4s;
 }
 .items_name:hover .items_name_r2 {
@@ -193,4 +194,16 @@ body {
 /*文章文字選取*/
 #text_select {
 	background-color: #00F;
+}
+.font_choise {
+	width: 20px;
+	height: 20px;
+	border: 2px solid #888;
+	border-radius: 50%;
+}
+.font_size_select {
+	background-color: #F00;
+}
+.font_color_select {
+	background-color: #F00;
 }
