@@ -65,11 +65,20 @@ window.onload = function() {
 	}
 }
 
+window.addEventListener('message', function(ev){
+	if (ev.data.event_id == 'keyCode') {
+		// console.log(ev.data.data);
+		key_down(ev.data.data);
+	}
+}, false);
 // 快捷鍵
 function key_point(ev) {
+	key_down(ev.keyCode);
+}
+function key_down(key) {
 	// console.log(ev.keyCode);
 	if (story_index !== 0) {
-		switch (ev.keyCode) {
+		switch (key) {
 			case 81:
 				story_close();
 				break;
