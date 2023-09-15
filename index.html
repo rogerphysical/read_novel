@@ -13,9 +13,10 @@
 		<div id="story">
 			<iframe id="cont" src="" onload="restart()"></iframe>
 			<div id="story_bts">
-				<div id="story_back" class="story_bt" onclick="story_change(-1)" title="hotkey:a">back</div>
-				<div id="story_next" class="story_bt" onclick="story_change(1)" title="hotkey:s">next</div>
-				<div id="story_close" class="story_bt" onclick="story_close()" title="hotkey:q">close</div>
+				<div id="story_back" class="story_bt" onclick="story_change(-1)" title="hotkey: a">back</div>
+				<div id="story_next" class="story_bt" onclick="story_change(1)" title="hotkey: s">next</div>
+				<!-- <div id="story_auto" class="story_bt" onclick="story_auto()" title="hotkey: d">auto</div> -->
+				<div id="story_close" class="story_bt" onclick="story_close()" title="hotkey: q">close</div>
 			</div>
 
 		</div>
@@ -69,7 +70,7 @@
 				
 			</div>
 
-			<!-- 設定頁面 -->
+			<!-- set page -->
 			<div id="page0" class="items">
 				<div class="items_name" onclick="to_page2('page0', 'page')">
 					<div class="items_name_pic">
@@ -130,6 +131,7 @@
 
 			</div>
 
+			<!-- set font size -->
 			<div id="page0_0" class="items">
 				<div class="items_name" onclick="to_page2('page0_0', 'page0')">
 					<div class="items_name_pic">
@@ -172,6 +174,7 @@
 				</div>
 			</div>
 
+			<!-- set color -->
 			<div id="page0_1" class="items">
 				<div class="items_name" onclick="to_page2('page0_1', 'page0')">
 					<div class="items_name_pic">
@@ -185,7 +188,7 @@
 					<div class="items_name_pic">
 						<div id="font_color_white" class="font_choise font_color_select"></div>
 					</div>
-					<div class="items_name_l">白底黑字</div>
+					<div class="items_name_l">Sunshine</div>
 					<div class="items_name_r" style="background-color: #FFF; color: #000;">字</div>
 				</div>
 
@@ -193,7 +196,7 @@
 					<div class="items_name_pic">
 						<div id="font_color_black" class="font_choise"></div>
 					</div>
-					<div class="items_name_l">黑底白字</div>
+					<div class="items_name_l">Moonshine</div>
 					<div class="items_name_r" style="background-color: #222; color: #FFF;">字</div>
 				</div>
 
