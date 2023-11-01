@@ -12,7 +12,7 @@ window.onload = function() {
 		document.getElementById(size_index).classList.add('font_size_select');
 	}
 	if (localStorage.getItem("read_novel_"+'font_color')) {
-        var color_json = JSON.parse(localStorage.getItem("read_novel_"+'font_color'));
+		var color_json = JSON.parse(localStorage.getItem("read_novel_"+'font_color'));
 
 		var color_index = color_json['index'];
 
@@ -23,7 +23,7 @@ window.onload = function() {
 
 		document.body.style.backgroundColor = color_json['backgroundColor'];
 		document.body.style.color = color_json['color'];
-        $(".items").css('backgroundColor', color_json['backgroundColor'])
+		$(".items").css('backgroundColor', color_json['backgroundColor'])
 	}
 	if (localStorage.getItem("read_novel_"+'record')) {
 		var par = document.getElementById("record_judge").parentNode;
@@ -160,9 +160,9 @@ function font_color(a) {
 	}
 	localStorage.setItem("read_novel_"+"font_color", JSON.stringify(save));
 
-    document.body.style.backgroundColor = save['backgroundColor'];
-    document.body.style.color = save['color'];
-    $(".items").css('backgroundColor', save['backgroundColor'])
+	document.body.style.backgroundColor = save['backgroundColor'];
+	document.body.style.color = save['color'];
+	$(".items").css('backgroundColor', save['backgroundColor'])
 
 }
 

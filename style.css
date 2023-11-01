@@ -44,7 +44,7 @@ body {
 	padding: 5px;
 
 	background-color: #888;
-    color: #000
+	color: #000
 }
 .story_bt {
 	height: 40px;
@@ -55,8 +55,7 @@ body {
 	line-height: 40px;
 	background-color: #FD6;
 	cursor: pointer;
-}
-#story_back, #story_next {
+	
 	float: left;
 }
 #story_close {
@@ -107,7 +106,7 @@ body {
 	width: 100%;
 	height: calc(100% + 10px);
 	padding: 10px;
-    padding-bottom: 20px;
+	padding-bottom: 20px;
 	overflow: scroll;
 	overflow-x: hidden;
 	overflow-y: auto;
