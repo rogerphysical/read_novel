@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<title>冊號櫥窗</title>
-		<link rel="icon" type="image/x-icon" href="images/magic_square2.ico">
+		<link rel="icon" type="image/x-icon" href="images/magic_square_1.ico">
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
@@ -13,9 +13,10 @@
 		<div id="story">
 			<iframe id="cont" src="" onload="restart()"></iframe>
 			<div id="story_bts">
-				<div id="story_back" class="story_bt" onclick="story_change(-1)" title="hotkey:a">back</div>
-				<div id="story_next" class="story_bt" onclick="story_change(1)" title="hotkey:s">next</div>
-				<div id="story_close" class="story_bt" onclick="story_close()" title="hotkey:q">close</div>
+				<div id="story_back" class="story_bt" onclick="story_change(-1)" title="hotkey: a">back</div>
+				<div id="story_next" class="story_bt" onclick="story_change(1)" title="hotkey: s">next</div>
+				<!-- <div id="story_auto" class="story_bt" onclick="story_auto()" title="hotkey: d">auto</div> -->
+				<div id="story_close" class="story_bt" onclick="story_close()" title="hotkey: q">close</div>
 			</div>
 
 		</div>
@@ -61,7 +62,7 @@
 				</div>
 				<div class="items_name" onclick="show_copyright()">
 					<div class="items_name_pic">
-						<img src="images/magic_square2.ico">
+						<img src="images/magic_square_1.ico">
 					</div>
 					<div class="items_name_l">版權所有</div>
 					<div class="items_name_r items_name_r1">&Delta;</div>
@@ -69,44 +70,40 @@
 				
 			</div>
 
-			<!-- 設定頁面 -->
+			<!-- set page -->
 			<div id="page0" class="items">
 				<div class="items_name" onclick="to_page2('page0', 'page')">
 					<div class="items_name_pic">
-						<img src="images/magic_square2.ico">
+						<img src="images/magic_square_1.ico">
 					</div>
 					<div class="items_name_l">回主頁</div>
 					<div class="items_name_r items_name_r2">&Delta;</div>
 				</div>
 
-				<div class="items_name">
+				<div class="items_name" onclick="to_page('page0', 'page0_0')">
 					<div class="items_name_pic">
 						<img src="images/gear2.png">
 					</div>
 					<div class="items_name_l">字體大小</div>
-					<select id="font_size" class="items_name_r" onchange="font_size(this)">
-						<option value="0">16</option>
-						<option value="1" selected>20</option>
-						<option value="2">24</option>
-						<option value="3">28</option>
-						<!-- <option value="4">32</option> -->
-						<!-- <option value="5">36</option> -->
-						<!-- <option value="6">40</option> -->
-					</select>
+					<div class="items_name_r items_name_r1">&Delta;</div>
+					<!-- <select id="font_size" class="items_name_r" onchange="font_size(this)"> -->
+					<!-- 	<option value="0" style="font-size: 16px;">Short</option> -->
+					<!-- 	<option value="1" style="font-size: 20px;" selected>Tall</option> -->
+					<!-- 	<option value="2" style="font-size: 24px;">Grande</option> -->
+					<!-- 	<option value="3" style="font-size: 28px;">Venti</option> -->
+					<!-- </select> -->
 				</div>
 
-				<div class="items_name">
+				<div class="items_name" onclick="to_page('page0', 'page0_1')">
 					<div class="items_name_pic">
 						<img src="images/gear2.png">
 					</div>
 					<div class="items_name_l">顏色組合</div>
-					<select id="font_color" class="items_name_r" onchange="font_color(this)">
-						<option value="0" selected style="color: #000; background-color: #FFF;">白底黑字</option>
-						<option value="1" style="color: #FFF; background-color: #222;">黑底白字</option>
-						<!-- <option value="2" style="color: #000; background-color: #F8F8F8;">灰底黑字</option> -->
-						<!-- <option value="3" style="color: #114; background-color: #F8F8F8;">灰底藍字</option> -->
-						<!-- <option value="4" style="color: #141; background-color: #F8F8F8;">灰底綠字</option> -->
-					</select>
+					<div class="items_name_r items_name_r1">&Delta;</div>
+					<!-- <select id="font_color" class="items_name_r" onchange="font_color(this)"> -->
+					<!-- 	<option value="0" selected style="color: #000; background-color: #FFF;">白底黑字</option> -->
+					<!-- 	<option value="1" style="color: #FFF; background-color: #222;">黑底白字</option> -->
+					<!-- </select> -->
 				</div>
 
 				<div class="items_name" onclick="use_record(this)">
@@ -134,10 +131,81 @@
 
 			</div>
 
+			<!-- set font size -->
+			<div id="page0_0" class="items">
+				<div class="items_name" onclick="to_page2('page0_0', 'page0')">
+					<div class="items_name_pic">
+						<img src="images/gear1.png">
+					</div>
+					<div class="items_name_l">回設定</div>
+					<div class="items_name_r items_name_r2">&Delta;</div>
+				</div>
+
+				<div class="items_name" onclick="font_size(this)">
+					<div class="items_name_pic">
+						<div id="font_size_short" class="font_choise"></div>
+					</div>
+					<div class="items_name_l">Short</div>
+					<div class="items_name_r" style="font-size: 16px;">字</div>
+				</div>
+
+				<div class="items_name" onclick="font_size(this)">
+					<div class="items_name_pic">
+						<div id="font_size_tall" class="font_choise font_size_select"></div>
+					</div>
+					<div class="items_name_l">Tall</div>
+					<div class="items_name_r" style="font-size: 20px;">字</div>
+				</div>
+
+				<div class="items_name" onclick="font_size(this)">
+					<div class="items_name_pic">
+						<div id="font_size_grande" class="font_choise"></div>
+					</div>
+					<div class="items_name_l">Grande</div>
+					<div class="items_name_r" style="font-size: 24px;">字</div>
+				</div>
+
+				<div class="items_name" onclick="font_size(this)">
+					<div class="items_name_pic">
+						<div id="font_size_venti" class="font_choise"></div>
+					</div>
+					<div class="items_name_l">Venti</div>
+					<div class="items_name_r" style="font-size: 28px;">字</div>
+				</div>
+			</div>
+
+			<!-- set color -->
+			<div id="page0_1" class="items">
+				<div class="items_name" onclick="to_page2('page0_1', 'page0')">
+					<div class="items_name_pic">
+						<img src="images/gear1.png">
+					</div>
+					<div class="items_name_l">回設定</div>
+					<div class="items_name_r items_name_r2">&Delta;</div>
+				</div>
+
+				<div class="items_name" onclick="font_color(this)">
+					<div class="items_name_pic">
+						<div id="font_color_white" class="font_choise font_color_select"></div>
+					</div>
+					<div class="items_name_l">Sunshine</div>
+					<div class="items_name_r" style="background-color: #FFF; color: #000;">字</div>
+				</div>
+
+				<div class="items_name" onclick="font_color(this)">
+					<div class="items_name_pic">
+						<div id="font_color_black" class="font_choise"></div>
+					</div>
+					<div class="items_name_l">Moonshine</div>
+					<div class="items_name_r" style="background-color: #222; color: #FFF;">字</div>
+				</div>
+
+			</div>
+
 			<div id="page1" class="items">
 				<div class="items_name" onclick="to_page2('page1', 'page')">
 					<div class="items_name_pic">
-						<img src="images/magic_square2.ico">
+						<img src="images/magic_square_1.ico">
 					</div>
 					<div class="items_name_l">回主頁</div>
 					<div class="items_name_r items_name_r2">&Delta;</div>
@@ -190,7 +258,7 @@
 			<div id="page2" class="items">
 				<div class="items_name" onclick="to_page2('page2', 'page')">
 					<div class="items_name_pic">
-						<img src="images/magic_square2.ico">
+						<img src="images/magic_square_1.ico">
 					</div>
 					<div class="items_name_l">回主頁</div>
 					<div class="items_name_r items_name_r2">&Delta;</div>
@@ -208,7 +276,7 @@
 			<div id="page3" class="items">
 				<div class="items_name" onclick="to_page2('page3', 'page')">
 					<div class="items_name_pic">
-						<img src="images/magic_square2.ico">
+						<img src="images/magic_square_1.ico">
 					</div>
 					<div class="items_name_l">回主頁</div>
 					<div class="items_name_r items_name_r2">&Delta;</div>

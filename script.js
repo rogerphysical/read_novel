@@ -4,20 +4,26 @@ window.onload = function() {
 
 	// 設定內容
 	if (localStorage.getItem("read_novel_"+'font_size')) {
-		var size_index = parseInt(JSON.parse(localStorage.getItem("read_novel_"+'font_size'))['index']);
-		var size_selected = document.getElementById('font_size');
-		size_selected.options[size_index].selected = true;
+		var size_index = JSON.parse(localStorage.getItem("read_novel_"+'font_size'))['index'];
+
+		var font_size_remove_class = document.getElementsByClassName('font_size_select')[0];
+		font_size_remove_class.classList.remove("font_size_select");
+
+		document.getElementById(size_index).classList.add('font_size_select');
 	}
 	if (localStorage.getItem("read_novel_"+'font_color')) {
-        var color_json = JSON.parse(localStorage.getItem("read_novel_"+'font_color'));
+		var color_json = JSON.parse(localStorage.getItem("read_novel_"+'font_color'));
 
-		var color_index = parseInt(color_json['index']);
-		var color_selected = document.getElementById('font_color');
-		color_selected.options[color_index].selected = true;
+		var color_index = color_json['index'];
+
+		var font_color_remove_class = document.getElementsByClassName('font_color_select')[0];
+		font_color_remove_class.classList.remove("font_color_select");
+
+		document.getElementById(color_index).classList.add('font_color_select');
 
 		document.body.style.backgroundColor = color_json['backgroundColor'];
 		document.body.style.color = color_json['color'];
-        $(".items").css('backgroundColor', color_json['backgroundColor'])
+		$(".items").css('backgroundColor', color_json['backgroundColor'])
 	}
 	if (localStorage.getItem("read_novel_"+'record')) {
 		var par = document.getElementById("record_judge").parentNode;
@@ -59,11 +65,20 @@ window.onload = function() {
 	}
 }
 
+window.addEventListener('message', function(ev){
+	if (ev.data.event_id == 'keyCode') {
+		// console.log(ev.data.data);
+		key_down(ev.data.data);
+	}
+}, false);
 // 快捷鍵
 function key_point(ev) {
+	key_down(ev.keyCode);
+}
+function key_down(key) {
 	// console.log(ev.keyCode);
 	if (story_index !== 0) {
-		switch (ev.keyCode) {
+		switch (key) {
 			case 81:
 				story_close();
 				break;
@@ -109,24 +124,45 @@ function to_page2(a, b) {
 
 // 以下設定
 function font_size(a) {
+	var font_size_remove_class = document.getElementsByClassName('font_size_select')[0];
+	font_size_remove_class.classList.remove("font_size_select");
+
+	var font_size_select = a.childNodes[1].childNodes[1];
+	font_size_select.classList.add('font_size_select');
+
+	var font_size_dict = {
+		"font_size_short": 16,
+		"font_size_tall": 20,
+		"font_size_grande": 24,
+		"font_size_venti": 28
+	}
 	var save = {
-		'index': a.value,
-		'size': a.options[a.value].text
+		'index': font_size_select.id,
+		'size': font_size_dict[font_size_select.id]
 	}
 	localStorage.setItem("read_novel_"+"font_size", JSON.stringify(save));
 }
 
 function font_color(a) {
+	var font_color_remove_class = document.getElementsByClassName('font_color_select')[0];
+	font_color_remove_class.classList.remove("font_color_select");
+
+	var font_color_select = a.childNodes[1].childNodes[1];
+	font_color_select.classList.add('font_color_select');
+	var font_color_dict = {
+		"font_color_white": ['#FFF', '#000'],
+		"font_color_black": ['#222', '#FFF'],
+	}
 	var save = {
-		'index': a.value,
-		'backgroundColor': a.options[a.value].style.backgroundColor,
-		'color': a.options[a.value].style.color
+		'index': font_color_select.id,
+		'backgroundColor': font_color_dict[font_color_select.id][0],
+		'color': font_color_dict[font_color_select.id][1]
 	}
 	localStorage.setItem("read_novel_"+"font_color", JSON.stringify(save));
 
-    document.body.style.backgroundColor = save['backgroundColor'];
-    document.body.style.color = save['color'];
-    $(".items").css('backgroundColor', save['backgroundColor'])
+	document.body.style.backgroundColor = save['backgroundColor'];
+	document.body.style.color = save['color'];
+	$(".items").css('backgroundColor', save['backgroundColor'])
 
 }
 

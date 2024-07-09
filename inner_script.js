@@ -1,6 +1,5 @@
 window.onload = function() {
 	if (localStorage.getItem("read_novel_"+'font_size')) {
-
 		var size = parseInt(JSON.parse(localStorage.getItem("read_novel_"+'font_size'))['size']);
 		document.body.style.fontSize = size+'px';
 	}
@@ -13,7 +12,16 @@ window.onload = function() {
 		document.body.style.userSelect = "none";
 	}
 }
-
+window.addEventListener('keydown', function(ev) {
+	// console.log(ev.keyCode);
+	window.parent.postMessage(
+		{
+			event_id: 'keyCode',
+			data: ev.keyCode
+		},
+		"*"
+	);
+});
 // 存放處
 var id = {};
 var index = {};
