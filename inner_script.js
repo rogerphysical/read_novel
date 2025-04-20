@@ -140,3 +140,5 @@ function change_to_num2(num, range) {
 	var num2 = num+Math.random()*range-range*0.5;
 	return Math.round(num2)
 }
+
+

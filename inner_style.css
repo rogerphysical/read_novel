@@ -11,13 +11,17 @@ body {
 }
 
 .title {
-	height: 60px;
-	line-height: 60px;
-	font-size: 28px;
+	height: 40px;
+	padding-top: 5px;
+	line-height: 35px;
+	font-size: 20px;
 	text-align: center;
 }
 .para {
-	margin: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 .para_select {
 	padding-left: 15px;
@@ -28,7 +32,7 @@ body {
 	float: left;
 	margin: 5px;
 	border-radius: 10px;
-	padding: 10px;
+	padding: 5px;
 
 	background-color: #FD6;
 	color: #000;
@@ -61,9 +65,9 @@ body {
 }
 
 /*分視窗 area與標題共處*/
-.para_area, .para_area2 {
+.para_area{
 	width: 100%;
-	height: calc(50vh - 60px);
+	height: calc(50vh - 20px);
 	border-top: 2px #888 solid;
 	
 	overflow: scroll;
@@ -72,11 +76,10 @@ body {
 
 	position: relative;
 }
-.para_area2 {
-	height: 50vh;
-}
 
 /*尾端留白*/
 .empty {
 	height: 80px;
 }
+
+

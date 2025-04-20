@@ -97,15 +97,17 @@ function key_down(key) {
 }
 
 // 改變網址
-function shange_url() {
+function change_url() {
 	var str = '?id='+story_page_id;
 	str += '&src='+story_page_src;
 	str += '&index='+story_index;
 	history.pushState(null,null, str);
 }
 
+// for hidden phone head
+// var lock_scroll = 0;
 function to_top() {
-	$('html, body').animate({scrollTop: 0}, 400);
+	window.scrollTo(0, 0);
 }
 function show_copyright() {
 	$('#footer').slideDown(400);
@@ -236,7 +238,7 @@ function record(num) {
 	document.getElementById('cont').src = story_page_src+'/index_'+story_index+'.html';
 
 	// 改變網址
-	shange_url();
+	change_url();
 
 	// 轉
 	document.getElementById('story').style.transform = "rotate(0deg)";
@@ -245,10 +247,18 @@ function record(num) {
 }
 // 開
 function record2() {
-	var story_width = $(window).width() > 768?"80%":"100%";
-	var story_left = $(window).width() > 768?"10%":"0%";
-	$("#story").animate({width: story_width, left: story_left, height: '100dvh', top: '0%'}, 400);
+	var story_width = $(window).width()>768 ? "80%" : "100%";
+	var story_left = $(window).width()>768 ? "10%" : "0%";
+	// var story_height = window.innerHeight - 40 + 'px';
+	// if (lock_scroll) {
+	// 	$("#story").animate({width: story_width, left: story_left, height: story_height, top: '400px'}, 400);
+	// }
+	// else {
+	// 	$("#story").animate({width: story_width, left: story_left, height: story_height, top: '0px'}, 400);
+	// }
+	$("#story").animate({width: story_width, left: story_left, height: "100dvh", top: '0px'}, 400);
 
+	setTimeout("story_bts.style.display = 'flex'", 400);
 	judge_bts();
 }
 
@@ -267,7 +277,7 @@ function story_change(para) {
 	setTimeout("document.getElementById('cont').src = story_page_src+'/index_'+story_index+'.html'", 400);
 
 	// 改變網址
-	shange_url();
+	change_url();
 
 	if (localStorage.getItem("read_novel_"+'record') !== "false") {
 		localStorage.setItem("read_novel_record_"+story_page_id, story_index);
@@ -277,8 +287,8 @@ function story_change(para) {
 	// 判斷與避免重複點選
 	judge_bts();
 	document.getElementById('story_bts').style.display = 'none';
-	setTimeout("$('#story_bts').fadeIn(400)", 400);
-	to_top();
+	setTimeout("story_bts.style.display = 'flex'", 800);
+	// to_top();
 }
 // 判斷是否有上/下一篇
 function judge_bts() {
@@ -289,9 +299,19 @@ function judge_bts() {
 // 闔上
 function story_close() {
 	story_index = 0;
-	$('#story').animate({width: '100vw', left: '0px', height: '2px', top: '50vh'}, 400);
+	// var story_top = window.innerHeight/2 + 400 + "px";
+	// if (lock_scroll) {
+	// 	$('#story').animate({width: '100vw', left: '0px', height: '2px', top: story_top}, 400);
+	// }
+	// else {
+	// 	$('#story').animate({width: '100vw', left: '0px', height: '2px', top: "50vh"}, 400);
+	// }
+	$('#story').animate({width: '100vw', left: '0px', height: '2px', top: "50vh"}, 400);
+
 	setTimeout("story_close2()", 400);
 	$('#cont').fadeOut(400);
+
+	// story_bts.style.display = "none";
 
 	// 還原網址
 	history.pushState(null,null, location.pathname);
@@ -314,3 +334,18 @@ function story_close2() {
 function restart() {
 	$('#cont').slideDown(400);
 }
+
+function lock_scroll_fun() {
+	// lock_scroll = 1;
+	// title.style.marginTop = "400px";
+	// item.style.marginBottom = "calc(10lvh - 40px)";
+	// base.style.height = "calc(100lvh - 40px)";
+	// base.scrollTo(0, 400);
+	// base.addEventListener("scrollend", (event) => {
+	// 	// console.log(1);
+	// 	base.scrollTo(0, 400);
+	// });
+	// story.style.top = "calc(400px + 50vh)";
+}
+
+

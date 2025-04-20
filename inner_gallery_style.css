@@ -1,0 +1,102 @@
+#pic_gallery {
+	top: 40px;
+	height: calc(100% - 40px);
+	border-top: 2px #888 solid;
+	padding-left: 15px;
+	padding-right: 15px;
+	
+	overflow: auto;
+}
+.pic_area {
+	width: calc(25% - 4px);
+	aspect-ratio: 1/1;
+	margin: 2px;
+	border: 2px #888 solid;
+	float: left;
+
+	cursor: pointer;
+	user-select: none;
+
+	position: relative;
+}
+.pic_files_text {
+	width: calc(100% - 4px);
+	aspect-ratio: unset;
+	padding: 10px;
+}
+#pic_gallery_pic {
+	width: 100%;
+	overflow: auto;
+}
+
+.pic_focus_pos {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+}
+
+#pic_focus {
+	background: #000;
+	display: none;
+}
+
+#pic_focus_div {
+	overflow: scroll;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#pic_focus_img{
+	width: fit-content;
+	height: fit-content;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+#pic_focus_touch {
+	display: block;
+
+	top: unset;
+	bottom: 100px;
+	left: 20px;
+	width: calc(100% - 40px);
+	height: 0px;
+
+	/* background: #888; */
+	/* opacity: .5; */
+}
+.pic_focus_touch_button {
+	width: 40px;
+	height: 40px;
+	border: 2px solid #eee;
+	border-radius: 50%;
+	background: #000;
+	color: #fff;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	cursor: pointer;
+	user-select: none;
+	opacity: .5;
+}
+#pic_focus_info {
+	left: 5px;
+	top: 45px;
+
+	justify-content: unset;
+	border: unset;
+	background: unset;
+	cursor: unset;
+
+	text-shadow: -1px -1px #000,
+	1px -1px #000,
+	-1px 1px #000,
+	1px 1px #000;
+}
+
+

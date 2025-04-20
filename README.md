@@ -4,3 +4,7 @@
 * 興趣:各種有趣、不無趣、好不有趣、不好不無趣的事
 
 ## 冊號櫥窗:[連結](https://rogerphysical.github.io/read_novel/index.html)
+<<<<<<< HEAD
+go go
+=======
+>>>>>>> b9dbdc3a6d6bd1112686fe69c28926412183a993
