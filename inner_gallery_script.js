@@ -1,9 +1,28 @@
+var video = 0;
+function use_video(video_use) {
+	if (video_use) {
+		video = 1; 
+		pic_focus_div.innerHTML = `
+				<video id="pic_focus_img" loop autoplay muted>
+					<source id="pic_focus_video" type="video/mp4">
+				</video>
+		`;
+		pic_focus_video_switch.style.display = "flex";
+	} else {
+		video = 0; 
+		pic_focus_div.innerHTML = `
+				<img id="pic_focus_img">
+		`;
+		pic_focus_video_switch.style.display = "none";
+	}
+}
+
 // var pic_name_list = {"images": ["images/.png"]};
 var pic_name_list = {};
 
 var pic_focus_now_name = "";
 var pic_focus_now_i = -1;
-var pic_focus_mode = 0; // 1: full pic
+var pic_focus_mode = 1; // 1: full pic
 
 // click to get pic
 function clear_pic_gallery() {
@@ -15,19 +34,27 @@ function clear_pic_gallery() {
 }
 function get_pic_dir(dir) {
 	pic_name_list[dir] = [];
-	pic_gallery_pic.innerHTML += "<div class='pic_files_text pic_area'>" + dir + "</div>";
+	pic_gallery_pic.innerHTML += "<div class='pic_files_text'>" + dir + "</div>";
+	if (video) {
+		pic_name_list[dir + "_video"] = [];
+	}
 }
-function get_pic_files(dir, file_name) {
+function get_pic_files(dir, file_name, file_name_video="") {
 	let index = pic_name_list[dir].length;
 	pic_name_list[dir].push(file_name);
+
+	if (video) {
+		pic_name_list[dir + "_video"].push(file_name_video);
+	}
 	// console.log(file_name);
+	// console.log(file_name_video);
 
 	let pic_focus_click_fun = "pic_focus_fun('" + dir + "', " + index + ")";
 	let pic_focus_click_img = "./images/" + file_name;
 
 	pic_gallery_pic.innerHTML += `
-		<div class="pic_area" onclick="` + pic_focus_click_fun + `">
-			<div class="para_pic"> <img src=` + pic_focus_click_img + `> </div>
+		<div class="pic_area para_pic" onclick="` + pic_focus_click_fun + `">
+			<img src=` + pic_focus_click_img + `>
 		</div>`;
 
 	return true
@@ -36,12 +63,10 @@ function get_pic_files(dir, file_name) {
 // pic focus fun
 function pic_focus_fun(dir, file_i) {
 	// console.log(pic_name_list);
-	var pic_name = pic_name_list[dir][file_i];
-	pic_focus_img.src = "./images/" + pic_name;
-	pic_focus_info.innerHTML = pic_name;
-
 	pic_focus_now_name = dir;
 	pic_focus_now_i = file_i;
+
+	pic_focus_change(0);
 
 	$('#pic_focus').fadeIn(400);
 	pic_focus_scale_mode(pic_focus_mode);
@@ -57,6 +82,14 @@ function pic_focus_touch_fun(action) {
 			pic_focus_mode_keep = 0;
 			break;
 
+		case 'video_switch':
+			if (pic_focus_img.paused) {
+				pic_focus_img.play();
+			} else {
+				pic_focus_img.pause();
+			}
+			break;
+
 		case 'scale_-':
 			pic_focus_scale_fix(0, -1);
 			break;
@@ -66,7 +99,7 @@ function pic_focus_touch_fun(action) {
 			break;
 	}
 }
-// to_next: -1, 1
+// to_next: 1, 0, -1
 function pic_focus_change(to_next) {
 	if (to_next == -1 && pic_focus_now_i == 0) {
 		return false;
@@ -76,8 +109,14 @@ function pic_focus_change(to_next) {
 	}
 	pic_focus_now_i += to_next;
 
-	var pic_name = pic_name_list[pic_focus_now_name][pic_focus_now_i];
-	pic_focus_img.src = "./images/" + pic_name;
+	if (video) {
+		var pic_name = pic_name_list[pic_focus_now_name + "_video"][pic_focus_now_i];
+		pic_focus_video.src = "./images/" + pic_name;
+		pic_focus_img.load();
+	} else {
+		var pic_name = pic_name_list[pic_focus_now_name][pic_focus_now_i];
+		pic_focus_img.src = "./images/" + pic_name;
+	}
 	pic_focus_info.innerHTML = pic_name;
 
 	return true;
@@ -237,7 +276,6 @@ function write_pic_focus_fun() {
 		<!-- pic_focus -->
 		<div id="pic_focus" class="pic_focus_pos">
 			<div id="pic_focus_div" class="pic_focus_pos" onclick="pic_focus_touch_fun('switch_touch')" ondblclick="pic_focus_scale_mode(2)">
-				<img id="pic_focus_img">
 			</div>
 
 			<!-- pic_focus_touch -->
@@ -247,6 +285,9 @@ function write_pic_focus_fun() {
 
 				<!-- back -->
 				<div class="pic_focus_pos pic_focus_touch_button" style="left: 0%; transform: rotate(-90deg);" onclick="pic_focus_touch_fun('close_focus')">&Delta;</div>
+
+				<!-- video play -->
+				<div id="pic_focus_video_switch" class="pic_focus_pos pic_focus_touch_button" style="left: calc(50% - 20px); display: none;" onclick="pic_focus_touch_fun('video_switch')">~</div>
 
 				<!-- scale -->
 				<div id="pic_focus_scale" class="pic_focus_pos pic_focus_touch_button" style="left: calc(100% - 40px); top: -120px; height: 80px;">&varr;</div>

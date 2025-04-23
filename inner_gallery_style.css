@@ -7,23 +7,35 @@
 	
 	overflow: auto;
 }
-.pic_area {
-	width: calc(25% - 4px);
-	aspect-ratio: 1/1;
+.pic_files_text, .pic_files_item, .pic_area {
 	margin: 2px;
 	border: 2px #888 solid;
 	float: left;
 
-	cursor: pointer;
 	user-select: none;
+}
+.pic_area {
+	width: calc(25% - 4px);
+	aspect-ratio: 1/1;
 
+	cursor: pointer;
 	position: relative;
 }
 .pic_files_text {
 	width: calc(100% - 4px);
-	aspect-ratio: unset;
 	padding: 10px;
 }
+.pic_files_item {
+	width: calc(50% - 4px);
+	padding: 10px;
+	cursor: pointer;
+}
+@media(max-width: 768px) {
+	.pic_files_item {
+		width: calc(100% - 4px);
+	}
+}
+
 #pic_gallery_pic {
 	width: 100%;
 	overflow: auto;

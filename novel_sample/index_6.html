@@ -15,9 +15,10 @@
 
 		<!-- pic_gallery -->
 		<div id="pic_gallery" class="pic_focus_pos">
-			<div class="pic_files_text pic_area">
-				<div class="pic_files_text pic_area"
+			<div class="pic_files_text">
+				<div class="pic_files_item"
 					onclick="clear_pic_gallery(),
+					use_video(0),
 					get_pic_dir('magic_square'),
 					get_pic_files('magic_square', 'magic_square.png'),
 					get_pic_files('magic_square', 'magic_square1.png'),
@@ -25,8 +26,9 @@
 					get_pic_files('magic_square', 'magic_square_move.gif')
 					">magic_square</div>
 
-				<div class="pic_files_text pic_area"
+				<div class="pic_files_item"
 					onclick="clear_pic_gallery(),
+					use_video(0),
 					get_pic_dir('magic_square_2d'),
 					get_pic_files('magic_square_2d', 'magic_square.png'),
 					get_pic_files('magic_square_2d', 'magic_square1.png'),
@@ -35,13 +37,21 @@
 					get_pic_files('magic_square_3d', 'magic_square2.png'),
 					get_pic_files('magic_square_3d', 'magic_square_move.gif')
 					">magic_square*</div>
+
+				<div class="pic_files_item"
+					onclick="clear_pic_gallery(),
+					use_video(1),
+					get_pic_dir('magic_square'),
+					get_pic_files('magic_square', 'magic_square.png', 'magic_square_move.mp4'),
+					get_pic_files('magic_square', 'magic_square2.png', 'magic_square_move.mp4')
+					">magic_square_video</div>
 			</div>
 
 			<div id="pic_gallery_pic">
 				<!-- sample -->
-				<!-- <div class="pic_files_text pic_area">images</div> -->
-				<!-- <div class="pic_area" onclick="pic_focus_fun('images', 0)"> -->
-				<!-- 	<div class="para_pic"> <img src="./images/pose_001_1.png"> </div> -->
+				<!-- <div class="pic_files_text">images</div> -->
+				<!-- <div class="pic_area para_pic" onclick="pic_focus_fun('images', 0)"> -->
+				<!-- 	<img src="./images/pose_001_1.png"> -->
 				<!-- </div> -->
 			</div>
 
